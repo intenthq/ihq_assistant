@@ -8,11 +8,10 @@ from langchain_community.vectorstores import FAISS
 os.environ["OPENAI_API_KEY"] = "<your key>"
 
 file_base_path = "./documents"
-data_folders = ["coda", "linear"]
+data_folders = ["coda", "linear", "github"]
 
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 
-txt_file_path = './documents/coda/AI-Powered_Insights_Hub.md'
 docs = []
 for folder in data_folders:
     for file in os.listdir(f"{file_base_path}/{folder}"):
@@ -22,4 +21,4 @@ for folder in data_folders:
 
 embeddings = OpenAIEmbeddings()
 vectorstore = FAISS.from_documents(docs, embedding=embeddings)
-vectorstore.save_local("./db/coda_linear_embeddings.db")
+vectorstore.save_local("./db/coda_linear_github_embeddings.db")

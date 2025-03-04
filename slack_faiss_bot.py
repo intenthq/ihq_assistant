@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 import logging
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
+from langchain import hub
+from langchain.chat_models import init_chat_model
 from langchain.embeddings import OpenAIEmbeddings
 from faiss import IndexFlatL2
 
@@ -47,8 +49,20 @@ app = App(token=SLACK_BOT_TOKEN)
 def search_faiss(query):
     embeddings = OpenAIEmbeddings()
     faiss = FAISS(embedding_function=embeddings, index=IndexFlatL2, docstore=InMemoryDocstore(), index_to_docstore_id={})    
-    db = faiss.load_local(folder_path="./db/coda_linear_embeddings.db", embeddings=embeddings, allow_dangerous_deserialization=True)
-    return db.similarity_search(query, k=5)
+    db = faiss.load_local(folder_path="./db/coda_linear_github_embeddings.db", embeddings=embeddings, allow_dangerous_deserialization=True)
+    
+    docs = db.similarity_search(query, k=3)
+    logging.debug(f"Len docs: {len(docs)}")
+      
+    docs_content = "\n\n".join(doc.page_content for doc in docs)
+    logging.debug(f"Doc sources: {';'.join([d.metadata['source'] for d in docs])}")
+    prompt = hub.pull("rlm/rag-prompt")
+
+
+    llm = init_chat_model("gpt-4", model_provider="openai")
+    response = llm.invoke(prompt.invoke({"question": query, "context": docs_content}))
+    
+    return response.content
 
 # Slack bot listens for messages that mention it
 @app.event("app_mention")

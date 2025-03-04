@@ -2,16 +2,30 @@ import os
 import faiss
 import numpy as np
 import openai
-import logging
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
+from dotenv import load_dotenv
+import logging
 
-# Define API Keys and Tokens
-SLACK_BOT_TOKEN = "<your-token>"
-SLACK_APP_TOKEN = "<your-app-token>"
-OPEN_API_KEY = "<your-open-api-token>"
+# Load environment variables from .env file
+load_dotenv()
+
+print("SLACK_BOT_TOKEN:", os.getenv("SLACK_BOT_TOKEN"))
+print("SLACK_APP_TOKEN:", os.getenv("SLACK_APP_TOKEN"))
+print("OPENAI_API_KEY:", os.getenv("OPENAI_API_KEY"))
+
+# # Define API Keys and Tokens from environment variables
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+SLACK_APP_TOKEN = os.getenv("SLACK_APP_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+
+
 # Configure OpenAI API Key
-openai.api_key = OPEN_API_KEY
+openai.api_key = OPENAI_API_KEY
+
+# Enable debug logging
+logging.basicConfig(level=logging.DEBUG)
 
 # Sample test documents
 documents = [
@@ -51,13 +65,11 @@ d = embeddings.shape[1]
 index = faiss.IndexFlatL2(d)
 index.add(embeddings)
 
-logging.basicConfig(level=logging.DEBUG)
 # Initialize Slack App
 app = App(token=SLACK_BOT_TOKEN)
 
 # Function to search FAISS
 def search_faiss(query):
-    print(f"Searching for the best answer in the vector for {query}")
     query_vector = np.array([get_embedding(query)], dtype=np.float32)
     faiss.normalize_L2(query_vector)
     _, idx = index.search(query_vector, k=1)
@@ -66,8 +78,10 @@ def search_faiss(query):
 # Slack bot listens for messages that mention it
 @app.event("app_mention")
 def handle_mention(event, say):
+    logging.debug(f"🔹 Received mention event: {event}")  # Debugging log
     user_query = event["text"]
     best_match = search_faiss(user_query)
+    logging.debug(f"🔹 Best FAISS match: {best_match}")
     say(f"Best Match: {best_match}")
 
 # Start the Slack bot using Socket Mode

@@ -1,4 +1,5 @@
 import os
+import json
 import faiss
 import numpy as np
 import openai
@@ -16,6 +17,9 @@ from faiss import IndexFlatL2
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 
+from openai import OpenAI
+from llm_tools import create_linear_ticket, tools 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -27,9 +31,12 @@ print("OPENAI_API_KEY:", os.getenv("OPENAI_API_KEY"))
 SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 SLACK_APP_TOKEN = os.getenv("SLACK_APP_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+LINEAR_API_KEY = os.environ.get("LINEAR_API_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
 # Configure OpenAI API Key
 openai.api_key = OPENAI_API_KEY
+client = OpenAI()
 
 # Enable debug logging
 logging.basicConfig(level=logging.DEBUG)
@@ -47,6 +54,39 @@ def get_embedding(text):
 # Initialize Slack App
 app = App(token=SLACK_BOT_TOKEN)
 
+def parse_chat_history(chat_history_raw):
+    chat_history = []
+    for message in chat_history_raw:
+        chat_history.append({"role": "user", "content": message})
+    return chat_history
+
+def get_prompt_messages(chat_history, question, context):
+    messages = [
+        {"role": "developer", "content": "You are a helpful assistant."}, # update this system prompt more
+    ]
+    messages.extend(chat_history)
+    messages.extend({"role": "developer", "content": f"This is the relevant context for you to answer the users query: {context}"})
+    messages.extend({"role": "user", "content": question})
+    return messages
+
+def chat_openai(messages, tools, model="gpt-4o-mini"):
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        tools=tools
+    )
+    return response.choices[0].message
+
+def implement_linear_function(function_args):
+    function_args = json.loads(function_args)
+    result = create_linear_ticket(
+        title=function_args.get("title"),
+        description=function_args.get("description"),
+        priority=function_args.get("priority")
+    )
+    second_message = f"A ticket as been created here: {result['issue']['url']}"
+    return second_message
+
 # Function to search FAISS
 def search_faiss(query, channel_id):
     embeddings = OpenAIEmbeddings()
@@ -60,17 +100,22 @@ def search_faiss(query, channel_id):
     logging.debug(f"Doc sources: {';'.join([d.metadata['source'] for d in docs])}")
 
     # Retrieve last 5 messages from memory for this channel
-    chat_history = "\n".join(mention_memory.get(channel_id, []))
+    # chat_history = "\n".join(mention_memory.get(channel_id, []))
+    chat_history = mention_memory.get(channel_id, [])
+    chat_history = parse_chat_history(chat_history)
     logging.debug(f"🔹 Chat History for channel {channel_id}: {chat_history}")
 
-    llm = init_chat_model("gpt-4", model_provider="openai")
-    prompt_template = PromptTemplate(
-        input_variables=["chat_history", "question", "context"],
-        template="{chat_history}\nUser: {question}\nContext: {context}\nAssistant:"
-    )
-    chain = LLMChain(llm=llm, prompt=prompt_template)
+    messages = get_prompt_messages(chat_history, query, docs_content)
+    response = chat_openai(messages, tools)
 
-    response = chain.run(chat_history=chat_history, question=query, context=docs_content)
+    if response.tool_calls != None:
+        function_name = response.tool_calls[0].function.name
+        function_args = response.tool_calls[0].function.arguments
+        if function_name == "create_linear_ticket":
+            try:
+                response = implement_linear_function(function_args)
+            except:
+                response = "Sorry failed to create a ticket (still learning!) - can you ask again?"
 
     return response  # Fix: LLMChain outputs a string, no need for `.content`
 

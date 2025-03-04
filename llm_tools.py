@@ -4,7 +4,7 @@ import requests
 from openai import OpenAI
 
 # Define the function to create a Linear ticket
-def create_linear_ticket(title: str, description: str, priority: int, LINEAR_API_KEY: str) -> dict:
+def create_linear_ticket(title: str, description: str, priority: int, linear_api_key: str) -> dict:
     """
     Creates a new Linear ticket using the given title, description, and priority.
 
@@ -19,7 +19,7 @@ def create_linear_ticket(title: str, description: str, priority: int, LINEAR_API
     TEAM_ID = '16b9a385-762f-47b0-b5d8-73ece3125bd9'
     API_URL = 'https://api.linear.app/graphql'
     headers = {
-        'Authorization': LINEAR_API_KEY,
+        'Authorization': linear_api_key,
         'Content-Type': 'application/json'
     }
 

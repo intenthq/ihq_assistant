@@ -82,7 +82,8 @@ def implement_linear_function(function_args):
     result = create_linear_ticket(
         title=function_args.get("title"),
         description=function_args.get("description"),
-        priority=function_args.get("priority")
+        priority=function_args.get("priority"),
+        linear_api_key=LINEAR_API_KEY
     )
     second_message = f"A ticket as been created here: {result['issue']['url']}"
     return second_message

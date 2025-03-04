@@ -1,0 +1,14 @@
+{
+    "id": "beee06b0-3740-4964-861c-a9cb8b7ac1da",
+    "title": "Design learners integration into the graph and interaction with the knowledge-base",
+    "description": "Asynchronously start a thread for questions to answer 7 then schedule time together to make some decisions and generate tasks for integrating learners into the graph ecosystem and how these interact with the knowledge-base.",
+    "state": {
+        "name": "In Review"
+    },
+    "assignee": {
+        "name": "sebastian.martins@intenthq.com"
+    },
+    "createdAt": "2025-01-06T11:01:48.148Z",
+    "updatedAt": "2025-02-11T16:56:00.212Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-65/design-learners-integration-into-the-graph-and-interaction-with-the"
+}

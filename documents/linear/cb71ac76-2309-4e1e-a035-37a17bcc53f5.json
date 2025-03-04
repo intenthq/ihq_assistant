@@ -1,0 +1,14 @@
+{
+    "id": "cb71ac76-2309-4e1e-a035-37a17bcc53f5",
+    "title": "Configure IE SSO",
+    "description": null,
+    "state": {
+        "name": "In Progress"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-23T11:06:53.260Z",
+    "updatedAt": "2025-02-11T14:29:47.741Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-28/configure-ie-sso"
+}

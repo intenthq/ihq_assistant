@@ -1,0 +1,14 @@
+{
+    "id": "3aa56c42-d6d2-4c39-8c1b-1a3f2a1b6539",
+    "title": "Update Profile Creator Pipeline",
+    "description": null,
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Aaron Schick"
+    },
+    "createdAt": "2025-01-27T11:12:13.220Z",
+    "updatedAt": "2025-02-04T16:36:40.985Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-42/update-profile-creator-pipeline"
+}

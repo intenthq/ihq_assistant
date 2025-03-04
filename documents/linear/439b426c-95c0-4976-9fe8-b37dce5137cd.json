@@ -1,0 +1,14 @@
+{
+    "id": "439b426c-95c0-4976-9fe8-b37dce5137cd",
+    "title": "Data Validation & Profile Data Processing",
+    "description": null,
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-27T11:12:13.220Z",
+    "updatedAt": "2025-01-27T11:14:13.387Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-41/data-validation-and-profile-data-processing"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "b08bff38-03aa-4446-8c20-c6e84ebe1160",
+    "title": "Prove IE ingestion value in vzw",
+    "description": "Having the ingestion pipeline in use in verizon will help to highlight any issues and ensure smoother integration in MTN\n\nTo do so we need to update the existing pipeline to point to the insights-explorer-ingestion topic and follow the new schema",
+    "state": {
+        "name": "In Review"
+    },
+    "assignee": {
+        "name": "Darren McConnell"
+    },
+    "createdAt": "2025-02-18T15:38:30.174Z",
+    "updatedAt": "2025-02-20T13:44:12.669Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-81/prove-ie-ingestion-value-in-vzw"
+}

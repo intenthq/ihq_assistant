@@ -1,0 +1,14 @@
+{
+    "id": "f5b73b20-1853-42d3-b57d-36e24d66b8d9",
+    "title": "Evaluate Topic Classification Learner at scale",
+    "description": "What are we trying to evaluate:\n\n* Do LLMs label topic with an acceptable accuracy?\n* Which is the best performing prompt?\n\nTo do:\n\n* Get sample of domains to test from high quality manually curated sample\n* Test most popular topic performance (from 190 focus topics)\n* Test variations in the prompt e.g. input data on small sample\n* Test on `short` definitions - test others after",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Georgia Harrison"
+    },
+    "createdAt": "2025-02-03T17:04:53.729Z",
+    "updatedAt": "2025-02-11T16:56:00.677Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-70/evaluate-topic-classification-learner-at-scale"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "44600c1a-5e1b-4da0-8a45-2eefb49f7d9f",
+    "title": "Confirm location for sending weblogs & profile data",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-23T11:01:45.061Z",
+    "updatedAt": "2025-02-11T14:28:13.995Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-21/confirm-location-for-sending-weblogs-and-profile-data"
+}

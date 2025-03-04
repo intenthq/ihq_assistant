@@ -1,0 +1,14 @@
+{
+    "id": "7135a310-aa83-457f-95ad-c9016aa1eb10",
+    "title": "Ingestion CI/CD pipeline",
+    "description": "As part of the build process, we'd like to have a CI pipeline that:\n\n* Runs automated tests that prove the service is working and we are not breaking the contract\n* Deploys the service to the staging environment",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Darren McConnell"
+    },
+    "createdAt": "2025-01-27T10:40:15.004Z",
+    "updatedAt": "2025-02-14T20:37:36.981Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-40/ingestion-cicd-pipeline"
+}

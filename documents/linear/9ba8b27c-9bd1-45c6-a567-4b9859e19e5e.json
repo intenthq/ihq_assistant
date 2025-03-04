@@ -1,0 +1,14 @@
+{
+    "id": "9ba8b27c-9bd1-45c6-a567-4b9859e19e5e",
+    "title": "Test and validate connection to S3 bucket",
+    "description": "",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-23T12:56:45.185Z",
+    "updatedAt": "2025-01-29T14:02:37.116Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-31/test-and-validate-connection-to-s3-bucket"
+}

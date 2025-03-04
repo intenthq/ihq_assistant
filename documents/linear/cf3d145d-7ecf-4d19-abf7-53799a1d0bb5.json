@@ -1,0 +1,14 @@
+{
+    "id": "cf3d145d-7ecf-4d19-abf7-53799a1d0bb5",
+    "title": "Improve ingestion reliability",
+    "description": "We have seen during testnig that any restarts of the ingestion pipeline during an ingestion results in lost messages. Implementing logstash persistent queues should prevent this.",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Darren McConnell"
+    },
+    "createdAt": "2025-02-06T08:58:44.187Z",
+    "updatedAt": "2025-02-10T16:34:53.636Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-48/improve-ingestion-reliability"
+}

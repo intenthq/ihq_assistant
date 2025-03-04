@@ -1,0 +1,14 @@
+{
+    "id": "42c6ef73-d205-4554-954c-2505b17d85c1",
+    "title": "Visualise Profile Data in IE",
+    "description": "",
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Aaron Schick"
+    },
+    "createdAt": "2025-02-21T14:18:43.326Z",
+    "updatedAt": "2025-02-21T14:19:57.593Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-99/visualise-profile-data-in-ie"
+}

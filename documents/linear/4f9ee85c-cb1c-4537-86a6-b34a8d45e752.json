@@ -1,0 +1,14 @@
+{
+    "id": "4f9ee85c-cb1c-4537-86a6-b34a8d45e752",
+    "title": "DNS setup",
+    "description": "",
+    "state": {
+        "name": "In Progress"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-24T14:05:19.207Z",
+    "updatedAt": "2025-02-11T14:31:11.913Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-35/dns-setup"
+}

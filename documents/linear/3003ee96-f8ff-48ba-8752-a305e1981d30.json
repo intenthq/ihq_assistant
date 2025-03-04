@@ -1,0 +1,14 @@
+{
+    "id": "3003ee96-f8ff-48ba-8752-a305e1981d30",
+    "title": "MTN weblog data preliminary validation",
+    "description": "Run basic checks on the one day of weblog data uploaded by MTN so far, looking into\n\n* format\n* volumes\n* \u201cout of the box\u201d brand and topic coverage",
+    "state": {
+        "name": "In Progress"
+    },
+    "assignee": {
+        "name": "Catherine da Graca"
+    },
+    "createdAt": "2025-01-29T12:59:38.810Z",
+    "updatedAt": "2025-02-25T09:30:39.185Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-49/mtn-weblog-data-preliminary-validation"
+}

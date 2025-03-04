@@ -1,0 +1,14 @@
+{
+    "id": "93902806-4055-420a-8e57-40633e584296",
+    "title": "Setup AWS domain and accounts",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:41:55.272Z",
+    "updatedAt": "2025-01-23T10:56:28.030Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-4/setup-aws-domain-and-accounts"
+}

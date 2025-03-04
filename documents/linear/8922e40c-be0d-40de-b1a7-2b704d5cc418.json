@@ -1,0 +1,14 @@
+{
+    "id": "8922e40c-be0d-40de-b1a7-2b704d5cc418",
+    "title": "Do brand allocations(tf-idf) of existing brands",
+    "description": "This is a day's worth of effort.",
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Catherine da Graca"
+    },
+    "createdAt": "2025-02-18T18:46:17.664Z",
+    "updatedAt": "2025-03-03T11:32:53.792Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-84/do-brand-allocationstf-idf-of-existing-brands"
+}

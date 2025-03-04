@@ -1,0 +1,14 @@
+{
+    "id": "0eaf4f2c-16c3-4ef2-adda-56d010055ff7",
+    "title": "Deploy Insights Explorer Container",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-23T11:04:01.173Z",
+    "updatedAt": "2025-01-24T14:04:08.378Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-24/deploy-insights-explorer-container"
+}

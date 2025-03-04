@@ -1,0 +1,14 @@
+{
+    "id": "1272329b-27b5-4a38-b8b6-298cfa7aa0bd",
+    "title": "Deploy data enrichment services (Databricks, EMR)",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:43:11.693Z",
+    "updatedAt": "2025-01-23T10:56:02.336Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-8/deploy-data-enrichment-services-databricks-emr"
+}

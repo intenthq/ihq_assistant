@@ -1,0 +1,14 @@
+{
+    "id": "cc57b643-8963-460f-916c-f48f7c7f9ac6",
+    "title": "Deploy RDS",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:57:07.083Z",
+    "updatedAt": "2025-01-23T10:57:48.532Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-18/deploy-rds"
+}

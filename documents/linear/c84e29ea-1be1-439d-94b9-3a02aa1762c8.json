@@ -1,0 +1,14 @@
+{
+    "id": "c84e29ea-1be1-439d-94b9-3a02aa1762c8",
+    "title": "Create IHQ access credentials",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:41:03.686Z",
+    "updatedAt": "2025-01-23T10:52:45.284Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-2/create-ihq-access-credentials"
+}

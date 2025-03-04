@@ -1,0 +1,14 @@
+{
+    "id": "9286823f-a884-4d10-b455-a16dc6cfba16",
+    "title": "Deploy Platform Access (Opal)",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:42:36.767Z",
+    "updatedAt": "2025-01-23T10:56:19.377Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-6/deploy-platform-access-opal"
+}

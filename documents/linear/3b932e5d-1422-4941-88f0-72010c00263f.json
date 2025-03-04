@@ -1,0 +1,14 @@
+{
+    "id": "3b932e5d-1422-4941-88f0-72010c00263f",
+    "title": "Ingestion service monitoring",
+    "description": "We want to have a Grafana dashboard that contains the metrics we can use to monitor and troubleshoot the service.\n\nAs a starting point, we'll use a default Grafana dashboard for Logstash. We'll iterate an evolve as we see need.",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Fernando Mora"
+    },
+    "createdAt": "2025-01-27T10:40:15.004Z",
+    "updatedAt": "2025-02-03T17:23:01.419Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-38/ingestion-service-monitoring"
+}

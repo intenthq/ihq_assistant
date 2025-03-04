@@ -1,0 +1,14 @@
+{
+    "id": "fb22ed6d-be73-4f83-a6d7-3c7e2a6b0b54",
+    "title": "Ingestion service error handling",
+    "description": "We want to inform the consumer of this service of any errors:\n\n* they are making (e.g. sending the wrong format)\n* the service is experiencing (e.g. OpenSearch cluster is down)\n\nFor now, we just need those errors to be in Mezmo.\n\nWe also want to make sure that, in case the client sends us millions of incorrect profiles, we don't send them all to Mezmo and consume all the quota (because the implication would be that we lose logging for all our platform).",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Darren McConnell"
+    },
+    "createdAt": "2025-01-27T10:40:15.004Z",
+    "updatedAt": "2025-02-03T17:22:56.798Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-39/ingestion-service-error-handling"
+}

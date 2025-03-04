@@ -1,0 +1,14 @@
+{
+    "id": "caca3e37-698b-4b78-988d-865b9f91ad14",
+    "title": "Run & Validate Profile Creator Pipeline",
+    "description": null,
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Aaron Schick"
+    },
+    "createdAt": "2025-01-27T11:12:13.220Z",
+    "updatedAt": "2025-02-04T16:36:43.893Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-43/run-and-validate-profile-creator-pipeline"
+}

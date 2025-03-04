@@ -1,0 +1,14 @@
+{
+    "id": "2aa73644-3009-4c3e-85f7-d44ef565e1f0",
+    "title": "Setup MTN repos",
+    "description": "",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:44:06.185Z",
+    "updatedAt": "2025-01-23T10:57:40.757Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-14/setup-mtn-repos"
+}

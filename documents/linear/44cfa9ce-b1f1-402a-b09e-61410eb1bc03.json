@@ -1,0 +1,14 @@
+{
+    "id": "44cfa9ce-b1f1-402a-b09e-61410eb1bc03",
+    "title": "Input/Output validation",
+    "description": null,
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Georgia Harrison"
+    },
+    "createdAt": "2025-02-18T22:29:05.111Z",
+    "updatedAt": "2025-03-03T11:32:10.464Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-95/inputoutput-validation"
+}

@@ -1,0 +1,14 @@
+{
+    "id": "6a59fb2e-6958-4e87-83d4-d6a324de870f",
+    "title": "Environment setup",
+    "description": null,
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "James Stocker"
+    },
+    "createdAt": "2025-01-23T10:47:19.392Z",
+    "updatedAt": "2025-01-23T10:57:10.922Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-15/environment-setup"
+}

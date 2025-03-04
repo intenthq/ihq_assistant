@@ -1,0 +1,14 @@
+{
+    "id": "46b0cccd-eeae-48e8-9a8d-5c3638c7ecd6",
+    "title": "Researching different LLM options",
+    "description": "Looking at the different LLM options and pricing, how to load them up and how to use caching",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Georgia Harrison"
+    },
+    "createdAt": "2025-01-29T15:08:18.525Z",
+    "updatedAt": "2025-02-11T16:56:00.890Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-72/researching-different-llm-options"
+}

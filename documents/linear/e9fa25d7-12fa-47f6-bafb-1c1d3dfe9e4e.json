@@ -1,0 +1,14 @@
+{
+    "id": "e9fa25d7-12fa-47f6-bafb-1c1d3dfe9e4e",
+    "title": "Perform data sustainability evaluation on 1 week of MTN data",
+    "description": "This will take around 2.5-3 days",
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Georgia Harrison"
+    },
+    "createdAt": "2025-02-18T22:20:26.430Z",
+    "updatedAt": "2025-03-03T10:50:00.147Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-88/perform-data-sustainability-evaluation-on-1-week-of-mtn-data"
+}

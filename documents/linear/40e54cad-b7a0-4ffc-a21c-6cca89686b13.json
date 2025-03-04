@@ -1,0 +1,14 @@
+{
+    "id": "40e54cad-b7a0-4ffc-a21c-6cca89686b13",
+    "title": "Enhance KB to update with new mappings",
+    "description": "Implement solution [here](https://coda.io/d/Data-Science-and-ML-Eng_dK5h4iVEEUo/Mapping-updates_suvb5-wQ#\\_lu3fC2H\\_) as designed - currently in review.",
+    "state": {
+        "name": "In Progress"
+    },
+    "assignee": {
+        "name": "Catherine da Graca"
+    },
+    "createdAt": "2025-01-17T15:30:40.533Z",
+    "updatedAt": "2025-02-19T10:20:23.884Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-69/enhance-kb-to-update-with-new-mappings"
+}

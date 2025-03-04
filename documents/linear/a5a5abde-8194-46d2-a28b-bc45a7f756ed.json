@@ -1,0 +1,14 @@
+{
+    "id": "a5a5abde-8194-46d2-a28b-bc45a7f756ed",
+    "title": "Produce inferences/predictions at scale",
+    "description": "After the initial test of successfully creating embeddings using a small dataset, now we want to solve the problem of producing inferences/predictions at scale.",
+    "state": {
+        "name": "In Progress"
+    },
+    "assignee": {
+        "name": "Xingzhe Xie"
+    },
+    "createdAt": "2025-02-25T16:09:38.221Z",
+    "updatedAt": "2025-03-03T13:48:56.107Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-104/produce-inferencespredictions-at-scale"
+}

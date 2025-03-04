@@ -1,0 +1,14 @@
+{
+    "id": "646a7cf6-97ed-4c70-b612-233e8046ae36",
+    "title": "IE Data Ingestion",
+    "description": "We want to have a way to ingest data in IE that:\n\n* scales\n* is reliable\n* can be troubleshooted\n* can be monitored\n* is documented\n* it's not an ad-hoc solution that only works for MTN",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Fernando Mora"
+    },
+    "createdAt": "2025-01-27T10:40:15.004Z",
+    "updatedAt": "2025-02-18T15:38:30.174Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-36/ie-data-ingestion"
+}

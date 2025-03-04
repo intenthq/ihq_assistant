@@ -1,0 +1,12 @@
+{
+    "id": "d225dd61-9cd7-4ecc-b9ee-52d40966ad39",
+    "title": "Test and validate connection to S3 data-import bucket",
+    "description": "Test MTN's ability to send data to `data-import` bucket in S3. ",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": null,
+    "createdAt": "2025-01-27T11:14:13.387Z",
+    "updatedAt": "2025-01-30T11:56:47.384Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-47/test-and-validate-connection-to-s3-data-import-bucket"
+}

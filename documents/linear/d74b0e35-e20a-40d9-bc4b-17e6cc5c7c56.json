@@ -1,0 +1,14 @@
+{
+    "id": "d74b0e35-e20a-40d9-bc4b-17e6cc5c7c56",
+    "title": "Provide Opt Out feed",
+    "description": "Hafsat, Blessing from MTN are the ones that will provide this feed",
+    "state": {
+        "name": "Todo"
+    },
+    "assignee": {
+        "name": "Kalin Kirev"
+    },
+    "createdAt": "2025-01-23T11:01:20.777Z",
+    "updatedAt": "2025-01-27T12:33:12.401Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-20/provide-opt-out-feed"
+}

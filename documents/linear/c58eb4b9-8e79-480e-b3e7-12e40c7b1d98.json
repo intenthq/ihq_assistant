@@ -1,0 +1,14 @@
+{
+    "id": "c58eb4b9-8e79-480e-b3e7-12e40c7b1d98",
+    "title": "Add learner context metadata storage to the knowledge base",
+    "description": "Whether simply for future reference, or as input to a subsequent learner where there is a pipeline, it would be useful for the context used to determine a mapping to be available in and retrievable from the knowledge base.\n\nThis not only saves re-fetching the relevant data from the web, but also ensures that we have a record of what the data *was* at the time a learner made its decision, regardless of any subsequent changes to the source.\n\nConsiderations:\n\n* storage space\n* impact on graph database performance\n* metadata exposure to clients if deployed on prem\n\nTBD: structure; think about whether we should store then even for a failed update.",
+    "state": {
+        "name": "Done"
+    },
+    "assignee": {
+        "name": "Catherine da Graca"
+    },
+    "createdAt": "2025-01-24T16:49:23.653Z",
+    "updatedAt": "2025-02-14T12:24:20.919Z",
+    "url": "https://linear.app/intent-hq/issue/FWD-66/add-learner-context-metadata-storage-to-the-knowledge-base"
+}

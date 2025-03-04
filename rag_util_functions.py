@@ -39,7 +39,7 @@ def load_databases():
     return dbs
 
 
-def rank_sources(question: str, model: str = "gpt-4"):
+def rank_sources(question: str, model: str = "gpt-4o"):
     llm = init_chat_model(model, model_provider="openai")
     result = llm.invoke(
         "I have 3 data sources: coda, linear and github. Produce a comma-separated list ordering these from most to "
@@ -47,7 +47,7 @@ def rank_sources(question: str, model: str = "gpt-4"):
     return [r.strip() for r in result.content.lower().split(",")]
 
 
-def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = "gpt-4"):
+def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = "gpt-4o"):
     if embeddings_db is not None:
         docs = embeddings_db.similarity_search(query=question, k=3)
         docs_content = "\n\n".join(doc.page_content for doc in docs)
@@ -58,7 +58,7 @@ def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: s
     return llm.invoke(prompt.invoke({"question": question, "context": docs_content})).content
 
 
-def query_preferred_source(question: str, model: str = "gpt-4"):
+def query_preferred_source(question: str, model: str = "gpt-4o"):
     source_dbs = load_databases()
     db = source_dbs[rank_sources(question)[0]]
     return execute_query(question, db, model)

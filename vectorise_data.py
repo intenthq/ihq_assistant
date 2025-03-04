@@ -21,7 +21,7 @@ for folder in data_folders:
         if folder == "coda":
             # Strip out the encoded images
             for d in data:
-                d.page_content = re.sub("(\[|\()data:image.+(\]|\))", "", d.page_content)
+                d.page_content = re.sub("[\[\(]data:image.+[\]\)]", "", d.page_content)
         docs += text_splitter.split_documents(data)
 
 embeddings = OpenAIEmbeddings()

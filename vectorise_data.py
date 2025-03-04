@@ -13,8 +13,8 @@ data_folders = ["coda", "linear", "github"]
 
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 
-docs = []
 for folder in data_folders:
+    docs = []
     for file in os.listdir(f"{file_base_path}/{folder}"):
         loader = TextLoader(file_path=f"{file_base_path}/{folder}/{file}", encoding="utf-8")
         data = loader.load()
@@ -24,6 +24,6 @@ for folder in data_folders:
                 d.page_content = re.sub("[\[\(]data:image.+[\]\)]", "", d.page_content)
         docs += text_splitter.split_documents(data)
 
-embeddings = OpenAIEmbeddings()
-vectorstore = FAISS.from_documents(docs, embedding=embeddings)
-vectorstore.save_local("./db/coda_linear_github_embeddings.db")
+        embeddings = OpenAIEmbeddings()
+        vectorstore = FAISS.from_documents(docs, embedding=embeddings)
+        vectorstore.save_local(f"./db/{folder}_embeddings.db")

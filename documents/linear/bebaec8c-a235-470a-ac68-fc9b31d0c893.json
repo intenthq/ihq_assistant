@@ -1,14 +1,14 @@
 {
     "id": "bebaec8c-a235-470a-ac68-fc9b31d0c893",
     "title": "Remove noise to have a cleaner topic hierarchy",
-    "description": "Facebook and Snapchat add too much noise.",
+    "description": "TL;DR: Facebook and Snapchat get mapped too enthusiastically and add too much noise.\n\nThe DS team has been doing some investigation into topics, and identified a few key points where noise is being introduced.\n\n* the Wikipedia for Facebook is tagged with the category \"Blog hosting services\", causing all facebook.com domains to be allocated to the topic Blogs; in actual fact, only visits to the subdomains `blog.facebook.com`, `blogica.facebook.com` and `betablogr.facebook.com` can reasonably be assumed to relate to blogs. \n* similarly, the Wikipedia entry for Snapchat is tagged with the category \"Internet television streaming services\". While this is probably broadly true for some definition of \"streaming\" and \"television\", this does not match with the way the topic is otherwise defined and used in our graph\n* We have a number of mappings that include a URL path (e.g. [`microsoft.com/teams`](http://microsoft.com/teams) -> \"Videotelephony\"). We don't receive the URL path, and match on the stem (`microsoft.com`). Most visits to `microsoft.com` have nothing to do with video calling.\n\nWe can add exclusion rules to prevent the first two, and curate the search conditions with paths (there are just over 200 of these), to remove some very high volume noise.",
     "state": {
-        "name": "In Progress"
+        "name": "Todo"
     },
     "assignee": {
         "name": "Catherine da Graca"
     },
     "createdAt": "2025-03-03T15:40:47.481Z",
-    "updatedAt": "2025-03-03T15:40:47.481Z",
+    "updatedAt": "2025-03-04T11:15:12.165Z",
     "url": "https://linear.app/intent-hq/issue/FWD-107/remove-noise-to-have-a-cleaner-topic-hierarchy"
 }

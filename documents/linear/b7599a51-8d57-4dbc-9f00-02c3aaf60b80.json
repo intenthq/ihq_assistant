@@ -3,12 +3,12 @@
     "title": "Run topic modelling on MTN data using VAE brand embeddings",
     "description": "test end to end using VAE brand embeddings\nEstimated time 1 week",
     "state": {
-        "name": "Done"
+        "name": "Todo"
     },
     "assignee": {
         "name": "Xingzhe Xie"
     },
     "createdAt": "2025-02-18T22:12:35.777Z",
-    "updatedAt": "2025-02-25T17:14:19.925Z",
+    "updatedAt": "2025-03-04T11:47:51.705Z",
     "url": "https://linear.app/intent-hq/issue/FWD-85/run-topic-modelling-on-mtn-data-using-vae-brand-embeddings"
 }

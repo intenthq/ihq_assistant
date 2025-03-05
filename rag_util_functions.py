@@ -1,16 +1,29 @@
+from enum import Enum
 from faiss import IndexFlatL2
 from langchain import hub
 from langchain.chat_models import init_chat_model
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
+from pydantic import BaseModel
 from typing import Optional
 
+
+class Source(Enum):
+    LINEAR = "Linear"
+    CODA = "Coda"
+    GITHUB = "Github"
+
+
 source_db_map = {
-    "linear": "linear_embeddings.db",
-    "github": "github_embeddings.db",
-    "coda": "coda_embeddings.db"
+    Source.LINEAR: "linear_embeddings.db",
+    Source.CODA: "github_embeddings.db",
+    Source.GITHUB: "coda_embeddings.db"
 }
+
+
+class SourceDBResponse(BaseModel):
+    ranked_sources: list[Source]
 
 
 # These functions assume os.environ["OPENAI_API_KEY"] is set
@@ -40,17 +53,20 @@ def load_databases():
 
 
 def rank_sources(question: str, model: str = "gpt-4o"):
-    llm = init_chat_model(model, model_provider="openai")
+    llm = init_chat_model(model, model_provider="openai").with_structured_output(SourceDBResponse)
     result = llm.invoke(
-        "I have 3 data sources: coda, linear and github. Produce a comma-separated list ordering these from most to "
+        f"I have {Source.__len__()} data sources: {','.join([s.name for s in list(Source)])}. Order these from most to "
         f"least relevant for answering the following question: {question}")
-    return [r.strip() for r in result.content.lower().split(",")]
+    return result
 
 
-def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = "gpt-4o"):
-    if embeddings_db is not None:
-        docs = embeddings_db.similarity_search(query=question, k=3)
-        docs_content = "\n\n".join(doc.page_content for doc in docs)
+def execute_query(question: str, embeddings_dbs: Optional[list[FAISS]] = None, model: str = "gpt-4o"):
+    if embeddings_dbs is not None and len(embeddings_dbs) > 0:
+        for embeddings_db in embeddings_dbs:
+            docs = embeddings_db.similarity_search(query=question, k=3)
+            docs_content = "\n\n".join(doc.page_content for doc in docs)
+            if len(docs_content) > 0:
+                break
     else:
         docs_content = ""
     prompt = hub.pull("rlm/rag-prompt")
@@ -60,5 +76,6 @@ def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: s
 
 def query_preferred_source(question: str, model: str = "gpt-4o"):
     source_dbs = load_databases()
-    db = source_dbs[rank_sources(question)[0]]
-    return execute_query(question, db, model)
+    sources = rank_sources(question).ranked_sources
+    dbs = [source_dbs[s] for s in sources]
+    return execute_query(question, dbs, model)

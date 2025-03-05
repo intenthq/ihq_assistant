@@ -1,0 +1,18 @@
+{
+  "id": "14aba774-90d3-4a6e-944d-4a8c74a653d3",
+  "title": "Cleaning the code",
+  "description": null,
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:28:53.420Z",
+  "updatedAt": "2025-03-03T11:32:14.231Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-94/cleaning-the-code",
+  "keywords": [
+    "cleaning",
+    "code"
+  ]
+}

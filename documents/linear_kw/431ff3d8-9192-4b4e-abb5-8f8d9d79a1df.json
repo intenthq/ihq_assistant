@@ -1,0 +1,23 @@
+{
+  "id": "431ff3d8-9192-4b4e-abb5-8f8d9d79a1df",
+  "title": "Analyse Topic Learner outputs",
+  "description": "Spend time to analysing the outputs beyond summary metrics. Are there any patterns to help us improve? Write up the results and share?",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-03T17:07:11.690Z",
+  "updatedAt": "2025-02-20T10:07:36.459Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-68/analyse-topic-learner-outputs",
+  "keywords": [
+    "Analyse",
+    "Topic Learner",
+    "outputs",
+    "summary metrics",
+    "patterns",
+    "improve",
+    "results"
+  ]
+}

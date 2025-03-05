@@ -1,0 +1,20 @@
+{
+  "id": "5e7e7fbc-764e-46d5-82be-ea8b774bd6d3",
+  "title": "Evaluate topic learner test results",
+  "description": "Estimate time- 1week",
+  "state": {
+    "name": "Duplicate"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:28:08.912Z",
+  "updatedAt": "2025-03-03T11:44:13.778Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-92/evaluate-topic-learner-test-results",
+  "keywords": [
+    "topic learner",
+    "test results",
+    "estimate time",
+    "1 week"
+  ]
+}

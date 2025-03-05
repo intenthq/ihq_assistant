@@ -1,0 +1,21 @@
+{
+  "id": "b0d353fe-1e6c-465a-93bd-7ab973518b33",
+  "title": "Validate profile data sent",
+  "description": "Review received Profile Data against the known data dictionary - [Data Dictionary](https://docs.google.com/spreadsheets/d/17leByGcPePYfN62ogG3BlJwzQMSidBYM/edit?gid=867992008#gid=867992008)\n\nProfile data is residing in - `971422720489-mtn-prod-data-import/profile/` bucket ",
+  "state": {
+    "name": "In Review"
+  },
+  "assignee": {
+    "name": "Rishabh Dubey"
+  },
+  "createdAt": "2025-01-23T12:56:53.125Z",
+  "updatedAt": "2025-02-25T10:12:26.898Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-32/validate-profile-data-sent",
+  "keywords": [
+    "Profile Data",
+    "Data Dictionary",
+    "data validation",
+    "971422720489-mtn-prod-data-import",
+    "profile bucket"
+  ]
+}

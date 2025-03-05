@@ -1,0 +1,18 @@
+{
+  "id": "51f82f51-0a99-44e9-ade9-272e0219bf88",
+  "title": "Deploy OpenSearch",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:43:58.554Z",
+  "updatedAt": "2025-01-31T14:42:48.206Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-13/deploy-opensearch",
+  "keywords": [
+    "Deploy",
+    "OpenSearch"
+  ]
+}

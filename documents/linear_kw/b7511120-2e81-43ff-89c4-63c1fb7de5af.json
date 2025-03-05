@@ -1,0 +1,19 @@
+{
+  "id": "b7511120-2e81-43ff-89c4-63c1fb7de5af",
+  "title": "Configure platform security",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:43:42.401Z",
+  "updatedAt": "2025-01-23T10:55:49.061Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-11/configure-platform-security",
+  "keywords": [
+    "Configure",
+    "Platform",
+    "Security"
+  ]
+}

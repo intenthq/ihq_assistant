@@ -1,0 +1,24 @@
+{
+  "id": "28feb50b-20d6-4764-b1f2-3057fb65c2e5",
+  "title": "Research LLMs for topic sizing for MTN",
+  "description": "Similar to this [ticket](https://linear.app/intent-hq/issue/FWD-52/research-external-data-sources-to-use-for-topic-sizing) for Verizon, we will use 5 LLMs to generate sizes for  [191 topics](https://docs.google.com/spreadsheets/d/1xezqoUHgNI2yqNvd4o_N1vyC-a7pVlE3rxDjLf8LOJU/edit?gid=723602819#gid=723602819), and compare sizes from these 5 LLMs and analyze the data sources.",
+  "state": {
+    "name": "In Review"
+  },
+  "assignee": {
+    "name": "Xingzhe Xie"
+  },
+  "createdAt": "2025-02-24T11:38:40.965Z",
+  "updatedAt": "2025-03-03T14:30:44.302Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-103/research-llms-for-topic-sizing-for-mtn",
+  "keywords": [
+    "LLMs",
+    "topic sizing",
+    "MTN",
+    "Verizon",
+    "external data sources",
+    "generate sizes",
+    "compare sizes",
+    "analyze data sources"
+  ]
+}

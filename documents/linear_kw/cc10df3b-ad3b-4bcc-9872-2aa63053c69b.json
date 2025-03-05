@@ -1,0 +1,18 @@
+{
+  "id": "cc10df3b-ad3b-4bcc-9872-2aa63053c69b",
+  "title": "Produce Data Validation report",
+  "description": null,
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Aaron Schick"
+  },
+  "createdAt": "2025-01-23T12:57:04.924Z",
+  "updatedAt": "2025-02-17T10:43:37.922Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-34/produce-data-validation-report",
+  "keywords": [
+    "Data Validation",
+    "report"
+  ]
+}

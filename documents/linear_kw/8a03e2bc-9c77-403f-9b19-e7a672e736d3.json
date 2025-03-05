@@ -1,0 +1,21 @@
+{
+  "id": "8a03e2bc-9c77-403f-9b19-e7a672e736d3",
+  "title": "Recalculate the metrics based on output of the evaluation of topics using internal domains",
+  "description": "This task should take 1 day",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:26:19.136Z",
+  "updatedAt": "2025-02-24T11:26:51.109Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-90/recalculate-the-metrics-based-on-output-of-the-evaluation-of-topics",
+  "keywords": [
+    "recalculate",
+    "metrics",
+    "evaluation",
+    "topics",
+    "internal domains"
+  ]
+}

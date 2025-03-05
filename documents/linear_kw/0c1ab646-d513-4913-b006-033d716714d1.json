@@ -1,0 +1,16 @@
+{
+  "id": "0c1ab646-d513-4913-b006-033d716714d1",
+  "title": "Data Validation & Profiles Data Processing",
+  "description": null,
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": null,
+  "createdAt": "2025-01-23T12:55:58.983Z",
+  "updatedAt": "2025-01-23T12:57:04.924Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-30/data-validation-and-profiles-data-processing",
+  "keywords": [
+    "Data Validation",
+    "Profiles Data Processing"
+  ]
+}

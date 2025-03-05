@@ -1,0 +1,18 @@
+{
+  "id": "30cfe242-9ea0-47c7-b5cf-93c652439272",
+  "title": "Platform setup",
+  "description": null,
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:57:07.083Z",
+  "updatedAt": "2025-02-11T11:43:13.317Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-16/platform-setup",
+  "keywords": [
+    "Platform",
+    "setup"
+  ]
+}

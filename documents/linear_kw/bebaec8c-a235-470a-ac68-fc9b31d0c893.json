@@ -1,0 +1,20 @@
+{
+  "id": "bebaec8c-a235-470a-ac68-fc9b31d0c893",
+  "title": "Remove noise to have a cleaner topic hierarchy",
+  "description": "Facebook and Snapchat add too much noise.",
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "Catherine da Graca"
+  },
+  "createdAt": "2025-03-03T15:40:47.481Z",
+  "updatedAt": "2025-03-03T15:40:47.481Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-107/remove-noise-to-have-a-cleaner-topic-hierarchy",
+  "keywords": [
+    "remove noise",
+    "cleaner topic hierarchy",
+    "Facebook",
+    "Snapchat"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "0f1435b7-9567-4562-b635-31aba98d843f",
+  "title": "Evaluate topics using internal domains",
+  "description": "Should be finished by 19th Feb 2025.",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:25:01.423Z",
+  "updatedAt": "2025-02-20T10:10:14.709Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-89/evaluate-topics-using-internal-domains",
+  "keywords": [
+    "Evaluate topics",
+    "internal domains",
+    "finished by 19th Feb 2025"
+  ]
+}

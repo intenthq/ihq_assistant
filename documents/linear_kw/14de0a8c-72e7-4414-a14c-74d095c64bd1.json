@@ -1,0 +1,29 @@
+{
+  "id": "14de0a8c-72e7-4414-a14c-74d095c64bd1",
+  "title": "Evaluate Topic Allocation Learner",
+  "description": "We need a learner to classify the topics associated with a given domain.\n\nGoals:\n\n* Prompt LLM using generated topic definitions to classify correct topics\n* Experiment with different prompting techniques\n\nEvaluation:\n\n* Use Wikidata labels as ground truth\n* General EDA of outputs:\n  * Is the classification as expected? Do we get a lot of no confidence predictions? Do we get a skew/bias towards certain topics?\n* Q: Is there a manually labelled dataset available?",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2024-12-10T12:04:55.111Z",
+  "updatedAt": "2025-02-11T16:56:01.004Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-73/evaluate-topic-allocation-learner",
+  "keywords": [
+    "Topic Allocation Learner",
+    "classify topics",
+    "LLM",
+    "topic definitions",
+    "prompting techniques",
+    "Wikidata labels",
+    "ground truth",
+    "EDA",
+    "classification",
+    "no confidence predictions",
+    "skew",
+    "bias",
+    "manually labelled dataset"
+  ]
+}

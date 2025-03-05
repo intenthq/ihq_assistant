@@ -1,0 +1,19 @@
+{
+  "id": "9e47cd98-53bc-4245-91fa-7b4c1f10d452",
+  "title": "Perform data coverage evaluation with 1 week of MTN data",
+  "description": "estimate-  1day",
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:19:24.711Z",
+  "updatedAt": "2025-03-03T10:49:32.599Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-87/perform-data-coverage-evaluation-with-1-week-of-mtn-data",
+  "keywords": [
+    "data coverage evaluation",
+    "MTN data",
+    "1 week"
+  ]
+}

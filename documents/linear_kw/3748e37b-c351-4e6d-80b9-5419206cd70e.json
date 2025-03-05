@@ -1,0 +1,19 @@
+{
+  "id": "3748e37b-c351-4e6d-80b9-5419206cd70e",
+  "title": "Create MTN theme",
+  "description": null,
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "Mark Bunn"
+  },
+  "createdAt": "2025-01-23T11:04:47.402Z",
+  "updatedAt": "2025-02-04T16:35:56.431Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-25/create-mtn-theme",
+  "keywords": [
+    "MTN",
+    "theme",
+    "create"
+  ]
+}

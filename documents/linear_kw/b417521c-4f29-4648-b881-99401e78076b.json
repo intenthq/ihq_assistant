@@ -1,0 +1,29 @@
+{
+  "id": "b417521c-4f29-4648-b881-99401e78076b",
+  "title": "Add audit columns to database tables",
+  "description": "In order to record changes to the graph knowledge base, prior and in addition to whatever versioning we design for it, we should have audit columns on each table to record inserts and updates.\n\nThis should be done by database triggers to ensure that it\u2019s never skipped.\n\n~~Maybe we should add an audit table instead/as well?~~ Full audit tables will be revisited later, when we enter a world where updates and deletes are a regular part of operation\n\nSetting a meaningful username is not practical, but recording the application might be - can we require this to be set at session level before allowing any modifications?",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Catherine da Graca"
+  },
+  "createdAt": "2025-01-15T15:32:52.211Z",
+  "updatedAt": "2025-02-24T18:08:54.977Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-64/add-audit-columns-to-database-tables",
+  "keywords": [
+    "audit columns",
+    "database tables",
+    "graph knowledge base",
+    "versioning",
+    "database triggers",
+    "inserts",
+    "updates",
+    "audit table",
+    "updates and deletes",
+    "username",
+    "application",
+    "session level",
+    "modifications"
+  ]
+}

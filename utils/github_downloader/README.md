@@ -2,25 +2,40 @@
 Each PR is saved as a JSON file with this structure:
 ```json
 {
-  "title": "Feature: Implement new authentication system",
-  "description": "This PR adds support for OAuth 2.0 authentication...",
+  "id": 123,
+  "title": "Add OAuth2 authentication",
+  "body": "This PR implements OAuth2 authentication for our API...",
   "author": "username",
   "created_at": "2023-05-20T14:53:02Z",
-  "changed_files": [
+  "merged_at": "2023-05-23T09:15:43Z",
+  "state": "closed",
+  "base_branch": "main",
+  "head_branch": "feature/oauth",
+  "related_issues": ["42", "57"],
+  "files": [
     {
       "filename": "auth/oauth.py",
-      "patch": "@@ -50,7 +50,12 @@ class OAuth:\n     def authenticate(self):\n-        return token\n+        # New implementation\n+        return self.get_token()"
+      "status": "added",
+      "additions": 120,
+      "deletions": 0,
+      "changes": 120,
+      "patch": "@@ -0,0 +1,45 @@\n+class OAuth2Provider:\n+    def __init__(self, client_id, client_secret):\n+        self.client_id = client_id..."
     }
   ],
   "reviews": [
     {
-      "user": "reviewer",
+      "user": {"login": "reviewer"},
       "state": "APPROVED",
-      "body": "Looks good to me!"
+      "body": "Looks good! Just a few minor suggestions."
     }
   ],
-  "linked_issues": "Authentication system upgrade",
-  "readme": "# Project\nThis is the project README..."
+  "comments": [
+    {
+      "user": {"login": "teammate"},
+      "body": "Should we add rate limiting to prevent abuse?",
+      "created_at": "2023-05-21T10:22:15Z"
+    }
+  ]
 }
 ```
 

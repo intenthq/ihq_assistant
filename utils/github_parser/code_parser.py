@@ -27,7 +27,7 @@ class CodeParser:
             "sql": get_language("sql"),
             # "dockerfile": get_language("dockerfile"),
             # "yaml": get_language("yaml"),
-            # "markdown": get_language("markdown"),
+            "markdown": get_language("markdown"),
             # "html": get_language("html"),
             # "css": get_language("css"),
             # "bash": get_language("bash"),
@@ -376,20 +376,7 @@ class CodeParser:
                 "(method_definition name: (property_identifier) @name) @function",
                 "(arrow_function parameters: (formal_parameters) @params) @function"
             ],
-            "java": "(method_declaration name: (identifier) @name) @function",
-            "go": "(function_declaration name: (identifier) @name) @function",
-            "ruby": "(method name: (identifier) @name) @function",
-            "rust": "(function_item name: (identifier) @name) @function",
-            # For Scala, functions are defined with the `def` keyword.
-            # The typical Tree-sitter query (e.g. from Lihaoyi’s tree-sitter-scala) uses the "function_definition" node.
-            "scala": "(function_definition name: (identifier) @name) @function",
-            # For TypeScript, the grammar is very similar to JavaScript.
-            # You might want to capture function declarations, method definitions, and arrow functions.
-            "typescript": [
-                "(function_declaration name: (identifier) @name) @function",
-                "(method_definition name: (property_identifier) @name) @function",
-                "(arrow_function) @function"
-            ]
+            # other languages...
         }
         
         if language not in query_map:
@@ -408,24 +395,67 @@ class CodeParser:
                 query = language_obj.query(query_string)
                 captures = query.captures(tree.root_node)
                 
-                for node, tag in captures.items():
-                    if tag == "function":
-                        # Find start and end of function
-                        start_point, end_point = node.start_point, node.end_point
+                # Check if captures is a dictionary (newer API)
+                if isinstance(captures, dict):
+                    function_nodes = captures.get('function', [])
+                    name_nodes = captures.get('name', [])
+                    
+                    # Create a mapping from function nodes to their names
+                    function_to_name = {}
+                    for name_node in name_nodes:
+                        # Find the parent function node for this name
+                        parent = name_node.parent
+                        while parent and parent not in function_nodes:
+                            parent = parent.parent
                         
-                        # Find the function name
-                        name_nodes = [n for n, t in captures if t == "name" and self._is_child(n, node)]
-                        name = name_nodes[0].text.decode('utf8') if name_nodes else "anonymous"
+                        if parent in function_nodes:
+                            function_to_name[parent] = name_node.text.decode('utf8')
+                    
+                    # Process each function node
+                    for function_node in function_nodes:
+                        start_point, end_point = function_node.start_point, function_node.end_point
+                        name = function_to_name.get(function_node, "anonymous")
                         
                         functions.append({
                             "name": name,
                             "start_line": start_point[0],
                             "end_line": end_point[0],
-                            "node": node
+                            "node": function_node
                         })
+                
+                # For the original list of tuples API
+                else:
+                    # Track function nodes and their associated names
+                    function_nodes = []
+                    node_to_name = {}
+                    
+                    for node, tag in captures:
+                        if tag == "function":
+                            function_nodes.append(node)
+                        elif tag == "name":
+                            # Associate this name with its parent function
+                            parent = node.parent
+                            while parent:
+                                if parent in function_nodes:
+                                    node_to_name[parent] = node.text.decode('utf8')
+                                    break
+                                parent = parent.parent
+                    
+                    # Create function entries
+                    for function_node in function_nodes:
+                        start_point, end_point = function_node.start_point, function_node.end_point
+                        name = node_to_name.get(function_node, "anonymous")
+                        
+                        functions.append({
+                            "name": name,
+                            "start_line": start_point[0],
+                            "end_line": end_point[0],
+                            "node": function_node
+                        })
+                        
             except Exception as e:
                 print(f"Query error for {language}: {str(e)}")
-                
+                    
         return functions
     
     def _is_child(self, potential_child, parent):
@@ -446,14 +476,7 @@ class CodeParser:
         query_map = {
             "python": "(class_definition name: (identifier) @name) @class",
             "javascript": "(class_declaration name: (identifier) @name) @class",
-            "typescript": "(class_declaration name: (type_identifier) @name) @class",
-            "java": "(class_declaration name: (identifier) @name) @class",
-            "ruby": "(class name: (constant) @name) @class",
-            "rust": "(impl_item) @class",
-            # Scala: using `class_definition` with an identifier as the class name.
-            "scala": "(class_definition name: (identifier) @name) @class",
-            # Go: extract struct types by capturing type declarations where the type is a struct.
-            "go": "(type_declaration (type_spec name: (type_identifier) @name type: (struct_type)) @class)"
+            # other languages...
         }
         
         if language not in query_map:
@@ -467,27 +490,103 @@ class CodeParser:
             query = language_obj.query(query_map[language])
             captures = query.captures(tree.root_node)
             
-            for node, tag in captures.items():
-                if tag == "class":
-                    # Find start and end of class
-                    start_point, end_point = node.start_point, node.end_point
+            # Check if captures is a dictionary (newer API)
+            if isinstance(captures, dict):
+                class_nodes = captures.get('class', [])
+                name_nodes = captures.get('name', [])
+                
+                # Create a mapping from class nodes to their names
+                class_to_name = {}
+                for name_node in name_nodes:
+                    # Find the parent class node for this name
+                    parent = name_node.parent
+                    while parent and parent not in class_nodes:
+                        parent = parent.parent
                     
-                    # Find the class name
-                    name_nodes = [n for n, t in captures if t == "name" and self._is_child(n, node)]
-                    name = name_nodes[0].text.decode('utf8') if name_nodes else "anonymous"
+                    if parent in class_nodes:
+                        class_to_name[parent] = name_node.text.decode('utf8')
+                
+                # Process each class node
+                for class_node in class_nodes:
+                    start_point, end_point = class_node.start_point, class_node.end_point
+                    name = class_to_name.get(class_node, "anonymous")
                     
                     classes.append({
                         "name": name,
                         "start_line": start_point[0],
                         "end_line": end_point[0],
-                        "node": node
+                        "node": class_node
                     })
+            
+            # For the original list of tuples API
+            else:
+                # Using the original approach for list of tuples
+                for node, tag in captures:
+                    if tag == "class":
+                        # Find the class name node
+                        name_nodes = [n for n, t in captures if t == "name" and self._is_child(n, node)]
+                        name = name_nodes[0].text.decode('utf8') if name_nodes else "anonymous"
+                        
+                        start_point, end_point = node.start_point, node.end_point
+                        classes.append({
+                            "name": name,
+                            "start_line": start_point[0],
+                            "end_line": end_point[0],
+                            "node": node
+                        })
+                        
         except Exception as e:
             print(f"Class extraction error for {language}: {str(e)}")
-                
+            
         return classes
     
     def extract_function_calls(self, tree, language):
+        """Extract function calls from the AST"""
+        if tree is None:
+            return []
+            
+        calls = []
+        query_map = {
+            "python": "(call function: (identifier) @function)",
+            "javascript": "(call_expression function: (identifier) @function)",
+            # other languages...
+        }
+        
+        if language not in query_map:
+            return []
+        
+        language_obj = self.supported_languages.get(language)
+        if not language_obj:
+            return []
+            
+        try:
+            query = language_obj.query(query_map[language])
+            captures = query.captures(tree.root_node)
+            
+            # Check if captures is a dictionary (newer API)
+            if isinstance(captures, dict):
+                function_nodes = captures.get('function', [])
+                
+                # Process each function call node
+                for node in function_nodes:
+                    calls.append({
+                        "name": node.text.decode('utf8'),
+                        "line": node.start_point[0],
+                    })
+            
+            # For the original list of tuples API
+            else:
+                for node, tag in captures:
+                    if tag == "function":
+                        calls.append({
+                            "name": node.text.decode('utf8'),
+                            "line": node.start_point[0],
+                        })
+                        
+        except Exception as e:
+            print(f"Call extraction error for {language}: {str(e)}")
+                
+        return calls
         """Extract function calls from the AST"""
         if tree is None:
             return []
@@ -515,7 +614,7 @@ class CodeParser:
             query = language_obj.query(query_map[language])
             captures = query.captures(tree.root_node)
             
-            for node, tag in captures.items():
+            for tag, node in captures.items():
                 if tag == "function":
                     calls.append({
                         "name": node.text.decode('utf8'),
@@ -529,92 +628,158 @@ class CodeParser:
     def analyze_diff(self, old_content, new_content, filename):
         """Analyze the difference between two versions of a file"""
         language = self.get_language_for_file(filename)
-        if not language or language not in self.supported_languages:
+        
+        # For unsupported languages
+        if not language:
             return {
                 "language": "unsupported",
                 "changes": "File type not supported for structural analysis"
             }
         
-        # Parse both content versions
-        old_tree = self.parse_code(old_content, language)
-        new_tree = self.parse_code(new_content, language)
-        
-        # If either parse failed, return early
-        if old_tree is None or new_tree is None:
+        # For Jupyter notebooks, we'll use the Python parser but with special content extraction
+        original_language = language
+        if language == "jupyter":
+            # We'll use the Python parser, but record that it's a Jupyter notebook
+            language_for_output = "jupyter-python"
+        else:
+            language_for_output = language
+            
+        # Check if we have a parser for this language (after potential Jupyter conversion)
+        parser_language = "python" if language == "jupyter" else language
+        if parser_language not in self.parsers:
             return {
-                "language": language,
+                "language": language_for_output,
+                "changes": "Parser not available for this language"
+            }
+        
+        # Parse both content versions
+        old_tree = None
+        new_tree = None
+        
+        if old_content:
+            old_tree = self.parse_code(old_content, language)
+            
+        if new_content:
+            new_tree = self.parse_code(new_content, language)
+        
+        # Handle the case where both parses failed
+        if old_tree is None and new_tree is None:
+            return {
+                "language": language_for_output,
                 "changes": "Unable to parse code structure"
             }
         
+        # For Jupyter notebooks, we'll analyze as Python code
+        language_for_analysis = "python" if language == "jupyter" else language
+        
         # Extract functions and classes from both versions
-        old_functions = self.extract_functions(old_tree, language)
-        new_functions = self.extract_functions(new_tree, language)
-        old_classes = self.extract_classes(old_tree, language)
-        new_classes = self.extract_classes(new_tree, language)
+        old_functions = self.extract_functions(old_tree, language_for_analysis) if old_tree else []
+        new_functions = self.extract_functions(new_tree, language_for_analysis) if new_tree else []
+        old_classes = self.extract_classes(old_tree, language_for_analysis) if old_tree else []
+        new_classes = self.extract_classes(new_tree, language_for_analysis) if new_tree else []
         
         # Compare to find added, modified, and removed elements
         added_functions = []
         modified_functions = []
         removed_functions = []
         
-        # Find added and modified functions
-        old_function_names = {f["name"] for f in old_functions}
-        for new_func in new_functions:
-            if new_func["name"] not in old_function_names:
-                added_functions.append(new_func["name"])
-            else:
-                # Check if implementation changed
-                old_func = next((f for f in old_functions if f["name"] == new_func["name"]), None)
-                if old_func and (old_func["start_line"] != new_func["start_line"] or 
-                                old_func["end_line"] != new_func["end_line"]):
-                    modified_functions.append(new_func["name"])
-        
-        # Find removed functions
-        new_function_names = {f["name"] for f in new_functions}
-        for old_func in old_functions:
-            if old_func["name"] not in new_function_names:
-                removed_functions.append(old_func["name"])
+        # If we have a new tree but not an old one, all functions are added
+        if old_tree is None and new_tree is not None:
+            added_functions = [f["name"] for f in new_functions]
+        # If we have an old tree but not a new one, all functions are removed
+        elif old_tree is not None and new_tree is None:
+            removed_functions = [f["name"] for f in old_functions]
+        # If we have both trees, perform detailed comparison
+        else:
+            # Find added and modified functions
+            old_function_names = {f["name"] for f in old_functions}
+            for new_func in new_functions:
+                if new_func["name"] not in old_function_names:
+                    added_functions.append(new_func["name"])
+                else:
+                    # Check if implementation changed
+                    old_func = next((f for f in old_functions if f["name"] == new_func["name"]), None)
+                    if old_func and (old_func["start_line"] != new_func["start_line"] or 
+                                    old_func["end_line"] != new_func["end_line"]):
+                        modified_functions.append(new_func["name"])
+            
+            # Find removed functions
+            new_function_names = {f["name"] for f in new_functions}
+            for old_func in old_functions:
+                if old_func["name"] not in new_function_names:
+                    removed_functions.append(old_func["name"])
         
         # Similar analysis for classes
         added_classes = []
         modified_classes = []
         removed_classes = []
         
-        old_class_names = {c["name"] for c in old_classes}
-        for new_class in new_classes:
-            if new_class["name"] not in old_class_names:
-                added_classes.append(new_class["name"])
-            else:
-                # Check if implementation changed
-                old_class = next((c for c in old_classes if c["name"] == new_class["name"]), None)
-                if old_class and (old_class["start_line"] != new_class["start_line"] or 
-                                old_class["end_line"] != new_class["end_line"]):
-                    modified_classes.append(new_class["name"])
+        # If we have a new tree but not an old one, all classes are added
+        if old_tree is None and new_tree is not None:
+            added_classes = [c["name"] for c in new_classes]
+        # If we have an old tree but not a new one, all classes are removed
+        elif old_tree is not None and new_tree is None:
+            removed_classes = [c["name"] for c in old_classes]
+        # If we have both trees, perform detailed comparison
+        else:
+            old_class_names = {c["name"] for c in old_classes}
+            for new_class in new_classes:
+                if new_class["name"] not in old_class_names:
+                    added_classes.append(new_class["name"])
+                else:
+                    # Check if implementation changed
+                    old_class = next((c for c in old_classes if c["name"] == new_class["name"]), None)
+                    if old_class and (old_class["start_line"] != new_class["start_line"] or 
+                                    old_class["end_line"] != new_class["end_line"]):
+                        modified_classes.append(new_class["name"])
+            
+            new_class_names = {c["name"] for c in new_classes}
+            for old_class in old_classes:
+                if old_class["name"] not in new_class_names:
+                    removed_classes.append(old_class["name"])
         
-        new_class_names = {c["name"] for c in new_classes}
-        for old_class in old_classes:
-            if old_class["name"] not in new_class_names:
-                removed_classes.append(old_class["name"])
+        # Extract function calls in the new version (if available)
+        function_calls = []
+        if new_tree is not None:
+            function_calls = [call["name"] for call in self.extract_function_calls(new_tree, language_for_analysis)]
         
-        # Extract function calls in the new version
-        function_calls = self.extract_function_calls(new_tree, language)
+        # For Jupyter notebooks, add additional analysis info (if new content is available)
+        if original_language == "jupyter" and new_content:
+            notebook_specific = self._analyze_notebook_specific(new_content)
+        else:
+            notebook_specific = None
         
-        return {
-            "language": language,
+        # Determine file status based on tree availability
+        if old_tree is None and new_tree is not None:
+            file_status = "added"
+        elif old_tree is not None and new_tree is None:
+            file_status = "removed"
+        else:
+            file_status = "modified"
+        
+        result = {
+            "language": language_for_output,
+            "file_status": file_status,
             "functions": {
                 "added": added_functions,
                 "modified": modified_functions,
                 "removed": removed_functions,
-                "total_count": len(new_functions)
+                "total_count": len(new_functions) if new_tree else 0
             },
             "classes": {
                 "added": added_classes,
                 "modified": modified_classes,
                 "removed": removed_classes,
-                "total_count": len(new_classes)
+                "total_count": len(new_classes) if new_tree else 0
             },
-            "function_calls": [call["name"] for call in function_calls]
+            #"function_calls": function_calls
         }
+        
+        # Add notebook-specific info if available
+        if notebook_specific:
+            result["notebook_specific"] = notebook_specific
+            
+        return result
     
     def reconstruct_file_from_patch(self, patch, filename):
         """Attempt to reconstruct before/after file content from a patch"""

@@ -1,0 +1,6 @@
+**EK suggested amendments**
+
+- Number of profiles is not controlled by product as driven primarily by sales. If you’re looking to encourage product to support sales better, an alternative could be growth rate of % pitch conversions from product demo stage to next stage in sales funnel plus growth rate of % sales conversations with product team presence.
+- Number of new features is difficult to define (what is a feature?), and encourages team to build > discover, > fix,  > improve, which may be a biased basis for prioritisation. If you’re looking to encourage discovery (as per the why paragraph above), an alternative could be growth rate of number of user interviews.
+- Support cost by profile sounds like it should be owned by new Client support squad, or tech ops, or engineering. If you’re looking to encourage self-serve, an alternative could be growth rate of % of audiences completed by client-side user vs internal user plus growth rate of no of support requests per client.
+- Alternatively, classic engagement metric of growth rate of MAU @ client, and user churn @ client?

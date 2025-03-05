@@ -61,21 +61,33 @@ def parse_chat_history(chat_history_raw):
     return chat_history
 
 def get_prompt_messages(chat_history, question, context):
+    # Start with system message
     messages = [
-        {"role": "developer", "content": "You are a helpful assistant."}, # update this system prompt more
+        {"role": "system", "content": "You are a helpful assistant."},
     ]
-    messages.extend(chat_history)
-    messages.extend({"role": "developer", "content": f"This is the relevant context for you to answer the users query: {context}"})
-    messages.extend({"role": "user", "content": question})
+    
+    # Add user chat history (must be strings)
+    for msg in chat_history:
+        messages.append({"role": "user", "content": str(msg)})  # Ensure content is a string
+
+    # Add context
+    messages.append({"role": "system", "content": f"This is the relevant context for you to answer the user's query: {context}"})
+    
+    # Add user question
+    messages.append({"role": "user", "content": str(question)})  # Ensure content is a string
+
     return messages
 
-def chat_openai(messages, tools, model="gpt-4o-mini"):
+def chat_openai(messages, tools=None, model="gpt-4"):
+    # Send request to OpenAI API
     response = client.chat.completions.create(
         model=model,
         messages=messages,
-        tools=tools
+        tools=tools if tools else []  # Pass an empty list if no tools
     )
-    return response.choices[0].message
+
+    # Return the full response object, not just the message content
+    return response  # Return the full response to access `tool_calls`
 
 def implement_linear_function(function_args):
     function_args = json.loads(function_args)
@@ -93,15 +105,15 @@ def search_faiss(query, channel_id):
     embeddings = OpenAIEmbeddings()
     faiss = FAISS(embedding_function=embeddings, index=IndexFlatL2, docstore=InMemoryDocstore(), index_to_docstore_id={})
     db = faiss.load_local(folder_path="./db/coda_linear_github_embeddings.db", embeddings=embeddings, allow_dangerous_deserialization=True)
-
     docs = db.similarity_search(query, k=3)
-    logging.debug(f"Len docs: {len(docs)}")
-
     docs_content = "\n\n".join(doc.page_content for doc in docs)
-    logging.debug(f"Doc sources: {';'.join([d.metadata['source'] for d in docs])}")
+
+    logging.debug(f"🔎 Query: {query}")
+    logging.debug(f"📏 Len docs: {len(docs)}")
+    logging.debug(f"📖 Doc sources: {';'.join([d.metadata['source'] for d in docs])}")
+    
 
     # Retrieve last 5 messages from memory for this channel
-    # chat_history = "\n".join(mention_memory.get(channel_id, []))
     chat_history = mention_memory.get(channel_id, [])
     chat_history = parse_chat_history(chat_history)
     logging.debug(f"🔹 Chat History for channel {channel_id}: {chat_history}")
@@ -109,16 +121,18 @@ def search_faiss(query, channel_id):
     messages = get_prompt_messages(chat_history, query, docs_content)
     response = chat_openai(messages, tools)
 
-    if response.tool_calls != None:
+    # Check if the response has tool calls and process accordingly
+    if hasattr(response, 'tool_calls') and response.tool_calls:
         function_name = response.tool_calls[0].function.name
         function_args = response.tool_calls[0].function.arguments
         if function_name == "create_linear_ticket":
             try:
                 response = implement_linear_function(function_args)
-            except:
-                response = "Sorry failed to create a ticket (still learning!) - can you ask again?"
+            except Exception as e:
+                logging.error(f"Error creating ticket: {e}")
+                response = "Sorry, failed to create a ticket (still learning!) - can you ask again?"
 
-    return response  # Fix: LLMChain outputs a string, no need for `.content`
+    return response.choices[0].message.content
 
 # Function to store last 5 mentions per channel
 def store_mention(channel_id, mention_text):

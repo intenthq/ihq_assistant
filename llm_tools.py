@@ -76,7 +76,7 @@ tools = [
         "type": "function",  # Specify the type as 'function'
         "function": {
             "name": "create_linear_ticket",
-            "description": "Creates a new Linear ticket with the given title, description, and priority.",
+            "description": "Creates a new Linear ticket with the given title, description, and priority. Only use this function if the user requests a new ticket, not when discussing tickets or tasks in general.",
             "parameters": {
                 "type": "object",
                 "properties": {

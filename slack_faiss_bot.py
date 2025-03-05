@@ -85,23 +85,22 @@ def chat_openai(messages, tools=None, model="gpt-4"):
         messages=messages,
         tools=tools if tools else []  # Pass an empty list if no tools
     )
-
     # Return the full response object, not just the message content
-    return response  # Return the full response to access `tool_calls`
+    return response.choices[0].message  # Return the full response to access `tool_calls`
 
 def implement_linear_function(function_args):
     function_args = json.loads(function_args)
     result = create_linear_ticket(
         title=function_args.get("title"),
         description=function_args.get("description"),
-        priority=function_args.get("priority"),
+        priority=int(function_args.get("priority")),
         linear_api_key=LINEAR_API_KEY
     )
     second_message = f"A ticket as been created here: {result['issue']['url']}"
     return second_message
 
 # Function to search FAISS
-def search_faiss(query, channel_id):
+def search_faiss(query, channel_id, tools):
     embeddings = OpenAIEmbeddings()
     faiss = FAISS(embedding_function=embeddings, index=IndexFlatL2, docstore=InMemoryDocstore(), index_to_docstore_id={})
     db = faiss.load_local(folder_path="./db/coda_linear_github_embeddings.db", embeddings=embeddings, allow_dangerous_deserialization=True)
@@ -131,8 +130,9 @@ def search_faiss(query, channel_id):
             except Exception as e:
                 logging.error(f"Error creating ticket: {e}")
                 response = "Sorry, failed to create a ticket (still learning!) - can you ask again?"
-
-    return response.choices[0].message.content
+    else:
+        response = response.content
+    return response
 
 # Function to store last 5 mentions per channel
 def store_mention(channel_id, mention_text):
@@ -149,7 +149,7 @@ def handle_mention(event, say):
     channel_id = event["channel"]
     
     store_mention(channel_id, user_query)  # Store the mention
-    best_match = search_faiss(user_query, channel_id)
+    best_match = search_faiss(user_query, channel_id, tools)
     logging.debug(f"🔹 Best FAISS match: {best_match}")
     
     say(f"Best Match: {best_match}")

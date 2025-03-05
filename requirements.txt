@@ -6,6 +6,7 @@ langchain_experimental
 langchain[docarray]
 langchain[openai]
 numpy
+pydantic
 python-dotenv
 slack_bolt
 tree-sitter

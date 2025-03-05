@@ -1,6 +1,5 @@
 import os
 import json
-import faiss
 import numpy as np
 import openai
 from slack_bolt import App
@@ -8,17 +7,11 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from dotenv import load_dotenv
 import logging
 from collections import deque
-from langchain_community.docstore.in_memory import InMemoryDocstore
-from langchain_community.vectorstores import FAISS
-from langchain import hub
-from langchain.chat_models import init_chat_model
-from langchain.embeddings import OpenAIEmbeddings
-from faiss import IndexFlatL2
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+
 
 from openai import OpenAI
-from llm_tools import create_linear_ticket, tools 
+from llm_tools import create_linear_ticket, tools
+from rag_util_functions import query_all_sources 
 
 # Load environment variables from .env file
 load_dotenv()
@@ -113,16 +106,7 @@ def implement_linear_function(function_args):
 
 # Function to search FAISS
 def search_faiss(query, channel_id, tools):
-    embeddings = OpenAIEmbeddings()
-    faiss = FAISS(embedding_function=embeddings, index=IndexFlatL2, docstore=InMemoryDocstore(), index_to_docstore_id={})
-    db = faiss.load_local(folder_path="./db/coda_linear_github_embeddings.db", embeddings=embeddings, allow_dangerous_deserialization=True)
-    docs = db.similarity_search(query, k=3)
-    docs_content = "\n\n".join(doc.page_content for doc in docs)
-
-    logging.debug(f"🔎 Query: {query}")
-    logging.debug(f"📏 Len docs: {len(docs)}")
-    logging.debug(f"📖 Doc sources: {';'.join([d.metadata['source'] for d in docs])}")
-    
+    docs_content = query_all_sources(query, model="gpt-4o", k=3)
 
     # Retrieve last 5 messages from memory for this channel
     chat_history = mention_memory.get(channel_id, [])

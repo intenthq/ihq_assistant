@@ -1,0 +1,18 @@
+{
+  "id": "36746758-673e-4164-8ec5-c8beb4301aff",
+  "title": "Insights Explorer setup",
+  "description": null,
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Kalin Kirev"
+  },
+  "createdAt": "2025-01-23T11:02:45.092Z",
+  "updatedAt": "2025-02-21T14:18:43.326Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-23/insights-explorer-setup",
+  "keywords": [
+    "Insights Explorer",
+    "setup"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "9fc14584-19ed-41a8-9963-2ee1af336afb",
+  "title": "Setup S3 bucket",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:43:36.286Z",
+  "updatedAt": "2025-01-23T10:52:45.384Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-10/setup-s3-bucket",
+  "keywords": [
+    "S3",
+    "bucket",
+    "Setup"
+  ]
+}

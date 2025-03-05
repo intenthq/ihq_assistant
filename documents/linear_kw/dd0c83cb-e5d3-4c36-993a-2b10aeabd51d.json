@@ -1,0 +1,19 @@
+{
+  "id": "dd0c83cb-e5d3-4c36-993a-2b10aeabd51d",
+  "title": "Get access to MTN data",
+  "description": "Get access to MTN data and do a quick EDA",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Talvany Carlotto"
+  },
+  "createdAt": "2025-02-21T09:54:42.601Z",
+  "updatedAt": "2025-02-25T16:10:51.374Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-98/get-access-to-mtn-data",
+  "keywords": [
+    "MTN data",
+    "access",
+    "EDA"
+  ]
+}

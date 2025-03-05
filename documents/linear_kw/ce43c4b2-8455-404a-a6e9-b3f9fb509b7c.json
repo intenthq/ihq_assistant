@@ -1,0 +1,17 @@
+{
+  "id": "ce43c4b2-8455-404a-a6e9-b3f9fb509b7c",
+  "title": "Apply MTN theme",
+  "description": null,
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "Aaron Schick"
+  },
+  "createdAt": "2025-01-23T11:06:04.312Z",
+  "updatedAt": "2025-02-17T10:44:24.921Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-27/apply-mtn-theme",
+  "keywords": [
+    "MTN theme"
+  ]
+}

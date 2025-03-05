@@ -1,0 +1,20 @@
+{
+  "id": "655bf848-afba-4f60-82f4-7b0a61957485",
+  "title": "Deploy core infrastructure (kubernetes/ArgoCD)",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:42:22.567Z",
+  "updatedAt": "2025-01-23T10:56:23.927Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-5/deploy-core-infrastructure-kubernetesargocd",
+  "keywords": [
+    "Deploy",
+    "core infrastructure",
+    "Kubernetes",
+    "ArgoCD"
+  ]
+}

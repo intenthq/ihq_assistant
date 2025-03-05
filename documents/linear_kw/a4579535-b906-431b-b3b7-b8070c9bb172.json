@@ -1,0 +1,20 @@
+{
+  "id": "a4579535-b906-431b-b3b7-b8070c9bb172",
+  "title": "Deploy and configure orchestration services (airflow)",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:43:29.588Z",
+  "updatedAt": "2025-01-23T10:55:58.086Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-9/deploy-and-configure-orchestration-services-airflow",
+  "keywords": [
+    "deploy",
+    "configure",
+    "orchestration services",
+    "airflow"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "4d976642-021c-49d7-87e8-4a4d78756529",
+  "title": "Test IE with default config & synthetic data",
+  "description": "",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Kalin Kirev"
+  },
+  "createdAt": "2025-01-23T11:07:09.541Z",
+  "updatedAt": "2025-01-24T14:04:28.635Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-29/test-ie-with-default-config-and-synthetic-data",
+  "keywords": [
+    "IE",
+    "default config",
+    "synthetic data",
+    "test"
+  ]
+}

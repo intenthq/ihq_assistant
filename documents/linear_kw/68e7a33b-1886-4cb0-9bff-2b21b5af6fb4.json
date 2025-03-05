@@ -1,0 +1,20 @@
+{
+  "id": "68e7a33b-1886-4cb0-9bff-2b21b5af6fb4",
+  "title": "Package the topic learner",
+  "description": "Estimate- 1 week",
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:28:37.028Z",
+  "updatedAt": "2025-03-03T10:50:02.930Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-93/package-the-topic-learner",
+  "keywords": [
+    "Package",
+    "topic learner",
+    "Estimate",
+    "1 week"
+  ]
+}

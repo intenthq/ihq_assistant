@@ -1,0 +1,18 @@
+{
+  "id": "54a38475-6adb-418a-9fb4-a2d97e496bf0",
+  "title": "Deploy deletion service",
+  "description": null,
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Sangram Reddy"
+  },
+  "createdAt": "2025-01-23T10:43:51.982Z",
+  "updatedAt": "2025-01-23T10:59:17.316Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-12/deploy-deletion-service",
+  "keywords": [
+    "deploy",
+    "deletion service"
+  ]
+}

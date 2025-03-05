@@ -1,0 +1,19 @@
+{
+  "id": "95306f03-1d3e-4350-a2d9-2350f2c69fb1",
+  "title": "Deploy managed service instances",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:42:47.773Z",
+  "updatedAt": "2025-01-23T10:56:08.792Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-7/deploy-managed-service-instances",
+  "keywords": [
+    "Deploy",
+    "Managed service",
+    "Instance"
+  ]
+}

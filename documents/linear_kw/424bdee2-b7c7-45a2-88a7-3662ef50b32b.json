@@ -1,0 +1,21 @@
+{
+  "id": "424bdee2-b7c7-45a2-88a7-3662ef50b32b",
+  "title": "Check LLM topic labels",
+  "description": "[https://docs.google.com/spreadsheets/d/1zIzdVeU0X3STgRArsGG0tZRKDLyPH176MpaBiSGuTV0/edit?gid=1508526617#gid=1508526617](https://docs.google.com/spreadsheets/d/1zIzdVeU0X3STgRArsGG0tZRKDLyPH176MpaBiSGuTV0/edit?gid=1508526617#gid=1508526617)",
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "Daria Barbalata"
+  },
+  "createdAt": "2025-02-05T11:07:13.498Z",
+  "updatedAt": "2025-02-11T16:56:00.448Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-67/check-llm-topic-labels",
+  "keywords": [
+    "LLM",
+    "topic labels",
+    "Google Sheets",
+    "spreadsheet",
+    "check"
+  ]
+}

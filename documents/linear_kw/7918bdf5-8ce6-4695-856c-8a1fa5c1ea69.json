@@ -1,0 +1,27 @@
+{
+  "id": "7918bdf5-8ce6-4695-856c-8a1fa5c1ea69",
+  "title": "Refactor 'decision tree for positive interaction definition' code",
+  "description": "The original ticket created the rules for positive interaction definition which are now being used in topic modelling. This ticket covers making the code reusable and reviewing the comments in the PR to merge to main so that this code is reusable as opposed to a hacky one-time run-through.\n\n[https://github.com/intenthq/ihq-embeddings/pull/168/files#diff-36aec575e21d3b367c1d97ceaf78c707c81c3bbd920104f769b499e9b0dd679c](https://github.com/intenthq/ihq-embeddings/pull/168/files#diff-36aec575e21d3b367c1d97ceaf78c707c81c3bbd920104f769b499e9b0dd679c)",
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "sebastian.martins@intenthq.com"
+  },
+  "createdAt": "2025-01-20T14:22:00.595Z",
+  "updatedAt": "2025-02-18T11:42:42.236Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-56/refactor-decision-tree-for-positive-interaction-definition-code",
+  "keywords": [
+    "refactor",
+    "decision tree",
+    "positive interaction definition",
+    "topic modelling",
+    "reusable code",
+    "comments",
+    "PR",
+    "merge",
+    "main",
+    "hacky",
+    "one-time run-through"
+  ]
+}

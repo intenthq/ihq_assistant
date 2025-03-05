@@ -1,0 +1,19 @@
+{
+  "id": "52277345-783b-4156-b34d-61895adb8add",
+  "title": "Test topic learner on MTN data",
+  "description": "Test topic learner using MTN data\n\nEstimate of 1 week",
+  "state": {
+    "name": "In Progress"
+  },
+  "assignee": {
+    "name": "Georgia Harrison"
+  },
+  "createdAt": "2025-02-18T22:27:25.018Z",
+  "updatedAt": "2025-03-03T10:38:02.242Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-91/test-topic-learner-on-mtn-data",
+  "keywords": [
+    "Test",
+    "topic learner",
+    "MTN data"
+  ]
+}

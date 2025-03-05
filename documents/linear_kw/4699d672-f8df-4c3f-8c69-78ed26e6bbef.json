@@ -1,0 +1,22 @@
+{
+  "id": "4699d672-f8df-4c3f-8c69-78ed26e6bbef",
+  "title": "Prepare simple baseline assessment of topic model on MTN data vs Verizon data on same model",
+  "description": "When we get MTN results using pipeline run we compare the results of running the same model on Verizon data for comparison.\n\nThis can take 1 week",
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": {
+    "name": "Maciej Pfutzner"
+  },
+  "createdAt": "2025-02-18T22:17:49.697Z",
+  "updatedAt": "2025-03-03T14:10:27.121Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-86/prepare-simple-baseline-assessment-of-topic-model-on-mtn-data-vs",
+  "keywords": [
+    "baseline assessment",
+    "topic model",
+    "MTN data",
+    "Verizon data",
+    "pipeline run",
+    "comparison"
+  ]
+}

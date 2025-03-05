@@ -1,0 +1,19 @@
+{
+  "id": "822cd15a-d503-4d82-87d8-0098aef7f74e",
+  "title": "Configure platform monitoring",
+  "description": null,
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "James Stocker"
+  },
+  "createdAt": "2025-01-23T10:41:37.566Z",
+  "updatedAt": "2025-01-23T10:56:32.949Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-3/configure-platform-monitoring",
+  "keywords": [
+    "platform",
+    "monitoring",
+    "configure"
+  ]
+}

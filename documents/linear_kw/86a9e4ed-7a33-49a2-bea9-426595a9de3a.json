@@ -1,0 +1,19 @@
+{
+  "id": "86a9e4ed-7a33-49a2-bea9-426595a9de3a",
+  "title": "Create a joint Data Dictionary with IHQ transformations",
+  "description": "The data dictionary will be used to inform MTN what transformations they have to do on the data for the query transfer",
+  "state": {
+    "name": "Todo"
+  },
+  "assignee": null,
+  "createdAt": "2025-02-21T14:19:57.593Z",
+  "updatedAt": "2025-02-21T14:19:57.593Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-102/create-a-joint-data-dictionary-with-ihq-transformations",
+  "keywords": [
+    "Data Dictionary",
+    "IHQ transformations",
+    "MTN",
+    "data transformations",
+    "query transfer"
+  ]
+}

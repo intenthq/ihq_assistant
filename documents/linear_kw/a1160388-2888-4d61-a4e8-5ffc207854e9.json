@@ -1,0 +1,33 @@
+{
+  "id": "a1160388-2888-4d61-a4e8-5ffc207854e9",
+  "title": "Ingestion service deployable",
+  "description": "We want to have an artifact that can be deployed into the environment using our standards (k8s, logging, versioned, CI, etc).\n\nThis service should fulfil the following functional requirements:\n\n* data is ingested for consumption in IE (that means, after ingesting it, the index can be promoted)\n* data is enriched with the `_rnd` metadata field so that we can use sampling\n* index is created with the naming convention of `profiles_client_`\n* there is a published contract that consumers of this service can use",
+  "state": {
+    "name": "Done"
+  },
+  "assignee": {
+    "name": "Fernando Mora"
+  },
+  "createdAt": "2025-01-27T10:40:15.004Z",
+  "updatedAt": "2025-02-10T16:34:15.139Z",
+  "url": "https://linear.app/intent-hq/issue/FWD-37/ingestion-service-deployable",
+  "keywords": [
+    "ingestion service",
+    "artifact",
+    "deployed",
+    "k8s",
+    "logging",
+    "versioned",
+    "CI",
+    "data ingestion",
+    "consumption",
+    "index",
+    "data enrichment",
+    "_rnd metadata field",
+    "sampling",
+    "index naming convention",
+    "profiles_client_",
+    "published contract",
+    "service consumers"
+  ]
+}

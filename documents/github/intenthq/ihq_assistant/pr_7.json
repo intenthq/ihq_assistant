@@ -143,7 +143,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -163,7 +163,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -171,7 +171,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -270,7 +270,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -290,7 +290,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -298,7 +298,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -363,5 +363,86 @@
   "commits": 2,
   "additions": 4,
   "deletions": 4,
-  "changed_files": 7
+  "changed_files": 7,
+  "files": [
+    {
+      "sha": "4cebdc6036c766e03b885ee0c229343d9b2acfa9",
+      "filename": "db/coda_embeddings.db/index.faiss",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fcoda_embeddings.db%2Findex.faiss",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fcoda_embeddings.db%2Findex.faiss",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Fcoda_embeddings.db%2Findex.faiss?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb"
+    },
+    {
+      "sha": "f52c7bb52c787350d26b7c73f6857705f822acd4",
+      "filename": "db/coda_embeddings.db/index.pkl",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fcoda_embeddings.db%2Findex.pkl",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fcoda_embeddings.db%2Findex.pkl",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Fcoda_embeddings.db%2Findex.pkl?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb"
+    },
+    {
+      "sha": "8c587a8d919fe89d8836c6a3b8c7070e8ea49865",
+      "filename": "db/github_embeddings.db/index.faiss",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fgithub_embeddings.db%2Findex.faiss",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fgithub_embeddings.db%2Findex.faiss",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Fgithub_embeddings.db%2Findex.faiss?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb"
+    },
+    {
+      "sha": "9cc3a34589853a3ff3b562c50008bd46e71914f4",
+      "filename": "db/github_embeddings.db/index.pkl",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fgithub_embeddings.db%2Findex.pkl",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Fgithub_embeddings.db%2Findex.pkl",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Fgithub_embeddings.db%2Findex.pkl?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb"
+    },
+    {
+      "sha": "c8efe6d2c52ef9083e97d76bd6d0cb866b92996d",
+      "filename": "db/linear_embeddings.db/index.faiss",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Flinear_embeddings.db%2Findex.faiss",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Flinear_embeddings.db%2Findex.faiss",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Flinear_embeddings.db%2Findex.faiss?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb"
+    },
+    {
+      "sha": "630ea2e7e2d9ff707b2afd182812d5a7c07f898c",
+      "filename": "db/linear_embeddings.db/index.pkl",
+      "status": "modified",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Flinear_embeddings.db%2Findex.pkl",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/db%2Flinear_embeddings.db%2Findex.pkl",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Flinear_embeddings.db%2Findex.pkl?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb"
+    },
+    {
+      "sha": "c11f9881f63b3d7090c4efd679e3a90c75a3a051",
+      "filename": "vectorise_data.py",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 4,
+      "changes": 8,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/vectorise_data.py",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/5a0d0d9bda757976676bc8136a7cdaf4b385fffb/vectorise_data.py",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/vectorise_data.py?ref=5a0d0d9bda757976676bc8136a7cdaf4b385fffb",
+      "patch": "@@ -13,8 +13,8 @@\n \n text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)\n \n-docs = []\n for folder in data_folders:\n+    docs = []\n     for file in os.listdir(f\"{file_base_path}/{folder}\"):\n         loader = TextLoader(file_path=f\"{file_base_path}/{folder}/{file}\", encoding=\"utf-8\")\n         data = loader.load()\n@@ -24,6 +24,6 @@\n                 d.page_content = re.sub(\"[\\[\\(]data:image.+[\\]\\)]\", \"\", d.page_content)\n         docs += text_splitter.split_documents(data)\n \n-embeddings = OpenAIEmbeddings()\n-vectorstore = FAISS.from_documents(docs, embedding=embeddings)\n-vectorstore.save_local(\"./db/coda_linear_github_embeddings.db\")\n+        embeddings = OpenAIEmbeddings()\n+        vectorstore = FAISS.from_documents(docs, embedding=embeddings)\n+        vectorstore.save_local(f\"./db/{folder}_embeddings.db\")\n\\ No newline at end of file"
+    }
+  ],
+  "raw_diff": "diff --git a/db/coda_embeddings.db/index.faiss b/db/coda_embeddings.db/index.faiss\nnew file mode 100644\nindex 0000000..4cebdc6\nBinary files /dev/null and b/db/coda_embeddings.db/index.faiss differ\ndiff --git a/db/coda_embeddings.db/index.pkl b/db/coda_embeddings.db/index.pkl\nnew file mode 100644\nindex 0000000..f52c7bb\nBinary files /dev/null and b/db/coda_embeddings.db/index.pkl differ\ndiff --git a/db/github_embeddings.db/index.faiss b/db/github_embeddings.db/index.faiss\nnew file mode 100644\nindex 0000000..8c587a8\nBinary files /dev/null and b/db/github_embeddings.db/index.faiss differ\ndiff --git a/db/github_embeddings.db/index.pkl b/db/github_embeddings.db/index.pkl\nnew file mode 100644\nindex 0000000..9cc3a34\nBinary files /dev/null and b/db/github_embeddings.db/index.pkl differ\ndiff --git a/db/linear_embeddings.db/index.faiss b/db/linear_embeddings.db/index.faiss\nindex df61a70..c8efe6d 100644\nBinary files a/db/linear_embeddings.db/index.faiss and b/db/linear_embeddings.db/index.faiss differ\ndiff --git a/db/linear_embeddings.db/index.pkl b/db/linear_embeddings.db/index.pkl\nindex f217f3e..630ea2e 100644\nBinary files a/db/linear_embeddings.db/index.pkl and b/db/linear_embeddings.db/index.pkl differ\ndiff --git a/vectorise_data.py b/vectorise_data.py\nindex d9840ae..c11f988 100644\n--- a/vectorise_data.py\n+++ b/vectorise_data.py\n@@ -13,8 +13,8 @@\n \n text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=200)\n \n-docs = []\n for folder in data_folders:\n+    docs = []\n     for file in os.listdir(f\"{file_base_path}/{folder}\"):\n         loader = TextLoader(file_path=f\"{file_base_path}/{folder}/{file}\", encoding=\"utf-8\")\n         data = loader.load()\n@@ -24,6 +24,6 @@\n                 d.page_content = re.sub(\"[\\[\\(]data:image.+[\\]\\)]\", \"\", d.page_content)\n         docs += text_splitter.split_documents(data)\n \n-embeddings = OpenAIEmbeddings()\n-vectorstore = FAISS.from_documents(docs, embedding=embeddings)\n-vectorstore.save_local(\"./db/coda_linear_github_embeddings.db\")\n+        embeddings = OpenAIEmbeddings()\n+        vectorstore = FAISS.from_documents(docs, embedding=embeddings)\n+        vectorstore.save_local(f\"./db/{folder}_embeddings.db\")\n\\ No newline at end of file\n"
 }

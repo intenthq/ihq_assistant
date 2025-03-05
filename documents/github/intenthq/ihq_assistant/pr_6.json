@@ -143,7 +143,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -163,7 +163,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -171,7 +171,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -270,7 +270,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -290,7 +290,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -298,7 +298,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -363,5 +363,54 @@
   "commits": 2,
   "additions": 6,
   "deletions": 5,
-  "changed_files": 4
+  "changed_files": 4,
+  "files": [
+    {
+      "sha": "df61a70fdc4b2f9c5771dcb9163c239573e7b0fd",
+      "filename": "db/linear_embeddings.db/index.faiss",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/aed0fcabce3def9462b14ebfb4c587b78f65f69f/db%2Flinear_embeddings.db%2Findex.faiss",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/aed0fcabce3def9462b14ebfb4c587b78f65f69f/db%2Flinear_embeddings.db%2Findex.faiss",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Flinear_embeddings.db%2Findex.faiss?ref=aed0fcabce3def9462b14ebfb4c587b78f65f69f"
+    },
+    {
+      "sha": "f217f3e2b01fe139f4e44801e1c7e9f3b06b7a38",
+      "filename": "db/linear_embeddings.db/index.pkl",
+      "status": "added",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/aed0fcabce3def9462b14ebfb4c587b78f65f69f/db%2Flinear_embeddings.db%2Findex.pkl",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/aed0fcabce3def9462b14ebfb4c587b78f65f69f/db%2Flinear_embeddings.db%2Findex.pkl",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/db%2Flinear_embeddings.db%2Findex.pkl?ref=aed0fcabce3def9462b14ebfb4c587b78f65f69f"
+    },
+    {
+      "sha": "642a37ced12aeaecda6c6535f444d49caffd30c2",
+      "filename": "load_vector_db.py",
+      "status": "modified",
+      "additions": 5,
+      "deletions": 4,
+      "changes": 9,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/aed0fcabce3def9462b14ebfb4c587b78f65f69f/load_vector_db.py",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/aed0fcabce3def9462b14ebfb4c587b78f65f69f/load_vector_db.py",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/load_vector_db.py?ref=aed0fcabce3def9462b14ebfb4c587b78f65f69f",
+      "patch": "@@ -4,10 +4,11 @@\n from langchain_community.docstore.in_memory import InMemoryDocstore\n from langchain_community.vectorstores import FAISS\n from langchain.embeddings import OpenAIEmbeddings\n+from typing import Optional\n \n \n # These functions assume os.environ[\"OPENAI_API_KEY\"] is set\n-def load_embeddings(source_path:str = \"coda_linear_github_embeddings.db\"):\n+def load_embeddings(source_path: str = \"coda_linear_github_embeddings.db\"):\n     embeddings = OpenAIEmbeddings()\n     faiss = FAISS(embedding_function=embeddings,\n                   index=IndexFlatL2,\n@@ -18,9 +19,9 @@ def load_embeddings(source_path:str = \"coda_linear_github_embeddings.db\"):\n                             allow_dangerous_deserialization=True)\n \n \n-def execute_query(question: str, embeddings:list = None, model:str = \"gpt-4\"):\n-    if embeddings is not None and len(embeddings) > 0:\n-        docs = embeddings.similarity_search(query=question, k=3)\n+def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = \"gpt-4\"):\n+    if embeddings_db is not None:\n+        docs = embeddings_db.similarity_search(query=question, k=3)\n         docs_content = \"\\n\\n\".join(doc.page_content for doc in docs)\n     else:\n         docs_content = \"\""
+    },
+    {
+      "sha": "d9840ae3a5a36956d0265cecca421c4934323e60",
+      "filename": "vectorise_data.py",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/aed0fcabce3def9462b14ebfb4c587b78f65f69f/vectorise_data.py",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/aed0fcabce3def9462b14ebfb4c587b78f65f69f/vectorise_data.py",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/vectorise_data.py?ref=aed0fcabce3def9462b14ebfb4c587b78f65f69f",
+      "patch": "@@ -21,7 +21,7 @@\n         if folder == \"coda\":\n             # Strip out the encoded images\n             for d in data:\n-                d.page_content = re.sub(\"(\\[|\\()data:image.+(\\]|\\))\", \"\", d.page_content)\n+                d.page_content = re.sub(\"[\\[\\(]data:image.+[\\]\\)]\", \"\", d.page_content)\n         docs += text_splitter.split_documents(data)\n \n embeddings = OpenAIEmbeddings()"
+    }
+  ],
+  "raw_diff": "diff --git a/db/linear_embeddings.db/index.faiss b/db/linear_embeddings.db/index.faiss\nnew file mode 100644\nindex 0000000..df61a70\nBinary files /dev/null and b/db/linear_embeddings.db/index.faiss differ\ndiff --git a/db/linear_embeddings.db/index.pkl b/db/linear_embeddings.db/index.pkl\nnew file mode 100644\nindex 0000000..f217f3e\nBinary files /dev/null and b/db/linear_embeddings.db/index.pkl differ\ndiff --git a/load_vector_db.py b/load_vector_db.py\nindex 0ede00e..642a37c 100644\n--- a/load_vector_db.py\n+++ b/load_vector_db.py\n@@ -4,10 +4,11 @@\n from langchain_community.docstore.in_memory import InMemoryDocstore\n from langchain_community.vectorstores import FAISS\n from langchain.embeddings import OpenAIEmbeddings\n+from typing import Optional\n \n \n # These functions assume os.environ[\"OPENAI_API_KEY\"] is set\n-def load_embeddings(source_path:str = \"coda_linear_github_embeddings.db\"):\n+def load_embeddings(source_path: str = \"coda_linear_github_embeddings.db\"):\n     embeddings = OpenAIEmbeddings()\n     faiss = FAISS(embedding_function=embeddings,\n                   index=IndexFlatL2,\n@@ -18,9 +19,9 @@ def load_embeddings(source_path:str = \"coda_linear_github_embeddings.db\"):\n                             allow_dangerous_deserialization=True)\n \n \n-def execute_query(question: str, embeddings:list = None, model:str = \"gpt-4\"):\n-    if embeddings is not None and len(embeddings) > 0:\n-        docs = embeddings.similarity_search(query=question, k=3)\n+def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = \"gpt-4\"):\n+    if embeddings_db is not None:\n+        docs = embeddings_db.similarity_search(query=question, k=3)\n         docs_content = \"\\n\\n\".join(doc.page_content for doc in docs)\n     else:\n         docs_content = \"\"\ndiff --git a/vectorise_data.py b/vectorise_data.py\nindex 5fd0741..d9840ae 100644\n--- a/vectorise_data.py\n+++ b/vectorise_data.py\n@@ -21,7 +21,7 @@\n         if folder == \"coda\":\n             # Strip out the encoded images\n             for d in data:\n-                d.page_content = re.sub(\"(\\[|\\()data:image.+(\\]|\\))\", \"\", d.page_content)\n+                d.page_content = re.sub(\"[\\[\\(]data:image.+[\\]\\)]\", \"\", d.page_content)\n         docs += text_splitter.split_documents(data)\n \n embeddings = OpenAIEmbeddings()\n"
 }

@@ -143,7 +143,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -163,7 +163,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -171,7 +171,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -270,7 +270,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -290,7 +290,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -298,7 +298,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -343,5 +343,21 @@
   "commits": 2,
   "additions": 35,
   "deletions": 1,
-  "changed_files": 1
+  "changed_files": 1,
+  "files": [
+    {
+      "sha": "feac8c20b212498a006f0ee738a6f9e5515bb174",
+      "filename": "rag_util_functions.py",
+      "status": "renamed",
+      "additions": 35,
+      "deletions": 1,
+      "changes": 36,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/77189e6a5c0ed620a966d4b608f22a7bd6317578/rag_util_functions.py",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/77189e6a5c0ed620a966d4b608f22a7bd6317578/rag_util_functions.py",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/rag_util_functions.py?ref=77189e6a5c0ed620a966d4b608f22a7bd6317578",
+      "patch": "@@ -6,6 +6,12 @@\n from langchain.embeddings import OpenAIEmbeddings\n from typing import Optional\n \n+source_db_map = {\n+    \"linear\": \"linear_embeddings.db\",\n+    \"github\": \"github_embeddings.db\",\n+    \"coda\": \"coda_embeddings.db\"\n+}\n+\n \n # These functions assume os.environ[\"OPENAI_API_KEY\"] is set\n def load_embeddings(source_path: str = \"coda_linear_github_embeddings.db\"):\n@@ -19,7 +25,29 @@ def load_embeddings(source_path: str = \"coda_linear_github_embeddings.db\"):\n                             allow_dangerous_deserialization=True)\n \n \n-def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = \"gpt-4\"):\n+def load_databases():\n+    dbs = {}\n+    embeddings = OpenAIEmbeddings()\n+    faiss = FAISS(embedding_function=embeddings,\n+                  index=IndexFlatL2,\n+                  docstore=InMemoryDocstore(),\n+                  index_to_docstore_id={})\n+    for source in source_db_map.keys():\n+        dbs[source] = faiss.load_local(folder_path=f\"./db/{source_db_map[source]}\",\n+                                       embeddings=embeddings,\n+                                       allow_dangerous_deserialization=True)\n+    return dbs\n+\n+\n+def rank_sources(question: str, model: str = \"gpt-4o\"):\n+    llm = init_chat_model(model, model_provider=\"openai\")\n+    result = llm.invoke(\n+        \"I have 3 data sources: coda, linear and github. Produce a comma-separated list ordering these from most to \"\n+        f\"least relevant for answering the following question: {question}\")\n+    return [r.strip() for r in result.content.lower().split(\",\")]\n+\n+\n+def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = \"gpt-4o\"):\n     if embeddings_db is not None:\n         docs = embeddings_db.similarity_search(query=question, k=3)\n         docs_content = \"\\n\\n\".join(doc.page_content for doc in docs)\n@@ -28,3 +56,9 @@ def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: s\n     prompt = hub.pull(\"rlm/rag-prompt\")\n     llm = init_chat_model(model, model_provider=\"openai\")\n     return llm.invoke(prompt.invoke({\"question\": question, \"context\": docs_content})).content\n+\n+\n+def query_preferred_source(question: str, model: str = \"gpt-4o\"):\n+    source_dbs = load_databases()\n+    db = source_dbs[rank_sources(question)[0]]\n+    return execute_query(question, db, model)\n\\ No newline at end of file",
+      "previous_filename": "load_vector_db.py"
+    }
+  ],
+  "raw_diff": "diff --git a/load_vector_db.py b/rag_util_functions.py\nsimilarity index 50%\nrename from load_vector_db.py\nrename to rag_util_functions.py\nindex 642a37c..feac8c2 100644\n--- a/load_vector_db.py\n+++ b/rag_util_functions.py\n@@ -6,6 +6,12 @@\n from langchain.embeddings import OpenAIEmbeddings\n from typing import Optional\n \n+source_db_map = {\n+    \"linear\": \"linear_embeddings.db\",\n+    \"github\": \"github_embeddings.db\",\n+    \"coda\": \"coda_embeddings.db\"\n+}\n+\n \n # These functions assume os.environ[\"OPENAI_API_KEY\"] is set\n def load_embeddings(source_path: str = \"coda_linear_github_embeddings.db\"):\n@@ -19,7 +25,29 @@ def load_embeddings(source_path: str = \"coda_linear_github_embeddings.db\"):\n                             allow_dangerous_deserialization=True)\n \n \n-def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = \"gpt-4\"):\n+def load_databases():\n+    dbs = {}\n+    embeddings = OpenAIEmbeddings()\n+    faiss = FAISS(embedding_function=embeddings,\n+                  index=IndexFlatL2,\n+                  docstore=InMemoryDocstore(),\n+                  index_to_docstore_id={})\n+    for source in source_db_map.keys():\n+        dbs[source] = faiss.load_local(folder_path=f\"./db/{source_db_map[source]}\",\n+                                       embeddings=embeddings,\n+                                       allow_dangerous_deserialization=True)\n+    return dbs\n+\n+\n+def rank_sources(question: str, model: str = \"gpt-4o\"):\n+    llm = init_chat_model(model, model_provider=\"openai\")\n+    result = llm.invoke(\n+        \"I have 3 data sources: coda, linear and github. Produce a comma-separated list ordering these from most to \"\n+        f\"least relevant for answering the following question: {question}\")\n+    return [r.strip() for r in result.content.lower().split(\",\")]\n+\n+\n+def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: str = \"gpt-4o\"):\n     if embeddings_db is not None:\n         docs = embeddings_db.similarity_search(query=question, k=3)\n         docs_content = \"\\n\\n\".join(doc.page_content for doc in docs)\n@@ -28,3 +56,9 @@ def execute_query(question: str, embeddings_db: Optional[FAISS] = None, model: s\n     prompt = hub.pull(\"rlm/rag-prompt\")\n     llm = init_chat_model(model, model_provider=\"openai\")\n     return llm.invoke(prompt.invoke({\"question\": question, \"context\": docs_content})).content\n+\n+\n+def query_preferred_source(question: str, model: str = \"gpt-4o\"):\n+    source_dbs = load_databases()\n+    db = source_dbs[rank_sources(question)[0]]\n+    return execute_query(question, db, model)\n\\ No newline at end of file\n"
 }

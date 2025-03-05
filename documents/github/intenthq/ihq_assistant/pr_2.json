@@ -165,7 +165,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -185,7 +185,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -193,7 +193,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -292,7 +292,7 @@
       "deployments_url": "https://api.github.com/repos/intenthq/ihq_assistant/deployments",
       "created_at": "2025-03-04T09:53:32Z",
       "updated_at": "2025-03-04T16:54:42Z",
-      "pushed_at": "2025-03-04T18:46:19Z",
+      "pushed_at": "2025-03-05T07:00:32Z",
       "git_url": "git://github.com/intenthq/ihq_assistant.git",
       "ssh_url": "git@github.com:intenthq/ihq_assistant.git",
       "clone_url": "https://github.com/intenthq/ihq_assistant.git",
@@ -312,7 +312,7 @@
       "mirror_url": null,
       "archived": false,
       "disabled": false,
-      "open_issues_count": 2,
+      "open_issues_count": 3,
       "license": null,
       "allow_forking": true,
       "is_template": false,
@@ -320,7 +320,7 @@
       "topics": [],
       "visibility": "public",
       "forks": 0,
-      "open_issues": 2,
+      "open_issues": 3,
       "watchers": 0,
       "default_branch": "main"
     }
@@ -385,5 +385,32 @@
   "commits": 1,
   "additions": 28,
   "deletions": 1,
-  "changed_files": 2
+  "changed_files": 2,
+  "files": [
+    {
+      "sha": "b631dc4bf956960f10cdc2a71f44871014ed1bba",
+      "filename": "README.md",
+      "status": "added",
+      "additions": 24,
+      "deletions": 0,
+      "changes": 24,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/d7db52defabd1998717a77054eede44fa574b871/README.md",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/d7db52defabd1998717a77054eede44fa574b871/README.md",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/README.md?ref=d7db52defabd1998717a77054eede44fa574b871",
+      "patch": "@@ -0,0 +1,24 @@\n+# Install dependencies\n+\n+Run\n+\n+```\n+pip3 install -r ./requirements.txt\n+```\n+\n+# Start the bot\n+\n+Copy `.env.template` to `.env`, fill the tokens with real tokens\n+\n+Create venv\n+\n+```\n+python3 -m venv venv\n+source venv/bin/activate\n+```\n+\n+Run\n+\n+```\n+python3 slack_faiss_bot.py\n+```"
+    },
+    {
+      "sha": "51a41e0f59e267c40fbd2b2116f13b143b646480",
+      "filename": "requirements.txt",
+      "status": "modified",
+      "additions": 4,
+      "deletions": 1,
+      "changes": 5,
+      "blob_url": "https://github.com/intenthq/ihq_assistant/blob/d7db52defabd1998717a77054eede44fa574b871/requirements.txt",
+      "raw_url": "https://github.com/intenthq/ihq_assistant/raw/d7db52defabd1998717a77054eede44fa574b871/requirements.txt",
+      "contents_url": "https://api.github.com/repos/intenthq/ihq_assistant/contents/requirements.txt?ref=d7db52defabd1998717a77054eede44fa574b871",
+      "patch": "@@ -4,4 +4,7 @@ tiktoken\n faiss-cpu\n langchain_experimental\n langchain[docarray]\n-langchain[openai]\n\\ No newline at end of file\n+langchain[openai]\n+numpy\n+python-dotenv\n+slack_bolt"
+    }
+  ],
+  "raw_diff": "diff --git a/README.md b/README.md\nnew file mode 100644\nindex 0000000..b631dc4\n--- /dev/null\n+++ b/README.md\n@@ -0,0 +1,24 @@\n+# Install dependencies\n+\n+Run\n+\n+```\n+pip3 install -r ./requirements.txt\n+```\n+\n+# Start the bot\n+\n+Copy `.env.template` to `.env`, fill the tokens with real tokens\n+\n+Create venv\n+\n+```\n+python3 -m venv venv\n+source venv/bin/activate\n+```\n+\n+Run\n+\n+```\n+python3 slack_faiss_bot.py\n+```\ndiff --git a/requirements.txt b/requirements.txt\nindex f612dd8..51a41e0 100644\n--- a/requirements.txt\n+++ b/requirements.txt\n@@ -4,4 +4,7 @@ tiktoken\n faiss-cpu\n langchain_experimental\n langchain[docarray]\n-langchain[openai]\n\\ No newline at end of file\n+langchain[openai]\n+numpy\n+python-dotenv\n+slack_bolt\n"
 }

@@ -61,11 +61,22 @@ def parse_chat_history(chat_history_raw):
     return chat_history
 
 def get_prompt_messages(chat_history, question, context):
+    system_prompt = """
+        You are a helpful assistant for Intent HQ, an expert on the company's projects, processes, and tools. Your role is to assist employees by providing answers and guidance on various tasks and projects. We operate in an agile environment, following the Shape Up framework.
+
+        You will be provided with context from several key data sources:
+
+        - **Coda**: Our documentation hub, which contains detailed information about ongoing projects, including Shape Up documents.
+        - **Linear**: A task and project management tool that tracks project progress. You'll receive task descriptions, assignees, and related metadata.
+        - **GitHub**: The source code repository, where you can find details about the codebase, including pull requests and code changes.
+
+        Please use this information to help employees efficiently and effectively with their questions.
+    """
     # Start with system message
     messages = [
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": system_prompt},
     ]
-    
+
     # Add user chat history (must be strings)
     for msg in chat_history:
         messages.append({"role": "user", "content": str(msg)})  # Ensure content is a string
@@ -78,11 +89,12 @@ def get_prompt_messages(chat_history, question, context):
 
     return messages
 
-def chat_openai(messages, tools=None, model="gpt-4"):
+def chat_openai(messages, tools=None, model="gpt-4o", temperature=0.1):
     # Send request to OpenAI API
     response = client.chat.completions.create(
         model=model,
         messages=messages,
+        temperature=temperature,
         tools=tools if tools else []  # Pass an empty list if no tools
     )
     # Return the full response object, not just the message content

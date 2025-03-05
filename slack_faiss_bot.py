@@ -164,7 +164,7 @@ def handle_mention(event, say):
     best_match = search_faiss(user_query, channel_id, tools)
     logging.debug(f"🔹 Best FAISS match: {best_match}")
     
-    say(f"Best Match: {best_match}")
+    say(f"{best_match}")
 
 # Start the Slack bot using Socket Mode
 if __name__ == "__main__":

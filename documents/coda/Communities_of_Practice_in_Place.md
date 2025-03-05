@@ -1,0 +1,9 @@
+## CoPs Information
+| Community | Slack Channel | Community MeetUp | Meeting Link | Coda Page with Information | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Data Science | cop-ds | Data Science \| Shindig<br/><br/>Thursday, 27 February**⋅**1:00 – 2:00pm<br/><br/>Every 2 weeks on Thursday | https://intenthq.zoom.us/j/89119677372?pwd=fgbvsLclg2UfDa1IRSHVrnSMQFtaR1.1 | [https://coda.io/d/Data-Science-and-ML-Eng_dK5h4iVEEUo/Data-Science-Shindig_suGucugk](https://coda.io/d/Data-Science-and-ML-Eng_dK5h4iVEEUo/Data-Science-Shindig_suGucugk) |  |
+| Data Science | cop-ds | DS Journal Club<br/><br/>Tuesday, 4 March**⋅**3:00 – 4:00pm<br/><br/>Every 2 weeks on Tuesday   | https://www.google.com/url?q=https://intenthq.zoom.us/j/88963656765?pwd%3DtlJfU667wyk0kH47OK1GNIYRDgaDoU.1&sa=D&source=calendar&ust=1740847569914664&usg=AOvVaw077v-5cG3_VtkdVEfh2dqh | https://coda.io/d/Data-Science-and-ML-Eng_dK5h4iVEEUo/Data-Science-Journal-club_suWG5KD3 |  |
+| Machine Learning | cop-ml | MLE Geek-outs <br/><br/>Tuesday, 4 March**⋅**3:00 – 4:00pm<br/><br/>Every 2 weeks on Tuesday | https://intenthq.zoom.us/j/83281281974?pwd=MW9CaW9hTStmNFpYdFNSN1JzVkdUUT09 | https://coda.io/d/Data-Science-and-ML-Eng_dK5h4iVEEUo/MLE-Geek-Outs_suGCfUzL |  |
+| Frontend engineering | cop-front-end | Frontend Roundtable 🍻🥨🍓☕🍪🍌🥜<br/><br/>Wednesday, 26 February**⋅**2:30 – 3:30pm<br/><br/>Weekly on Wednesday | https://intenthq.zoom.us/j/87207265849?pwd=oyaiCvaSf9i1rviJxbaKNp97PbdAOU.1 |  |  |
+| Backed engineering | cop-scala |  |  |  |  |
+| Edge Mobile   | cop-device-insights | Device Insights - All-hands Meeting<br/><br/>Tuesday, 25 February**⋅**12:00 – 12:50pm<br/><br/>Every 2 weeks on Tuesday | https://intenthq.zoom.us/j/81788165439?pwd=m0Ee9sdeYOmV7EGjEbzDK7XfiWYNLY.1 |  |  |

@@ -1,0 +1,14 @@
+{
+    "id": "b7817b88-18bc-4970-8d4e-a2874a9b0bf9",
+    "title": "Evaluate third party onboarding tools and short-list the ones to be tested",
+    "description": "**Objective:** Create an onboarding experience for client users that is product-led.\n\n**Outcome:** Identify and implement the most effective approach that enables self-serve adoption of MTN users.\n\n**Considerations:** Build vs. Buy. There are many third-party tools that enable non-engineering approaches with minimal technical set up. However, these can be quite costly, and previous attempts to implement these tools have failed client approval, most notably attempts to implement Chameleon at Verizon.\n\n**Challenges with self-serve adoption:** The challenges are documented on this [coda page.](https://coda.io/d/\\_d9gA2tlGdu2/User-Level-Competencies_su_Bc1H2) The challenges are categorised by:\n\n* **4 stages of user progression to adoption** (from awareness, through first-time-use, to continued and habitual use)\n* **5 stages of unlocking value** (from onboarding, to segmenting an analysing, through to extracting meaningful insights to aid decision making, and actioning)\n\n**Onboarding progression has been defined by three different competency levels.** The goals to onboard the user and progress through the levels, along with possible solutions and details have been documented on this [coda page.](https://coda.io/d/\\_d9gA2tlGdu2/User-Level-Competencies_su_Bc1H2)\n\n**Solution options** are documented on this [coda page](https://coda.io/d/\\_d9gA2tlGdu2/Solution-options_su5VdAkn)",
+    "state": {
+        "name": "Backlog"
+    },
+    "assignee": {
+        "name": "Mark Bunn"
+    },
+    "createdAt": "2025-02-19T17:03:23.380Z",
+    "updatedAt": "2025-02-20T14:30:26.699Z",
+    "url": "https://linear.app/intent-hq/issue/FOU-966/evaluate-third-party-onboarding-tools-and-short-list-the-ones-to-be"
+}

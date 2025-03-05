@@ -1,0 +1,12 @@
+{
+    "id": "67cc3f10-6d17-40f0-bc99-51d36762956b",
+    "title": "Some UI consistency hub&dashboard",
+    "description": "* no new window\n* home icon\n* list of dashboards is terrible\n* top menu vs left menu\n* \u2026\n\nTBD with Mike",
+    "state": {
+        "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-03-03T10:56:16.551Z",
+    "updatedAt": "2025-03-03T10:56:16.551Z",
+    "url": "https://linear.app/intent-hq/issue/FOU-978/some-ui-consistency-hubanddashboard"
+}

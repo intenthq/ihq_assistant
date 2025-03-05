@@ -1,0 +1,12 @@
+{
+    "id": "3c1e0d3d-02ac-4943-8227-28b17d6a64db",
+    "title": "Ability to select some templates when creating a new dashboard",
+    "description": "Users see a blank canvas that is scary.\n\nThe workaround from Ben and others have been to share dashboards with them. We later renamed those as \"shared templates\".\n\nAcceptance criteria\n\n* When creating a new dashboard, the user sees a list of possible templates they can choose from\n* This list is configurable per client\n* Shared templates are renamed to something else TBD\n* Existing clients (VZ, CBL) TBD",
+    "state": {
+        "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-03-03T10:55:30.084Z",
+    "updatedAt": "2025-03-03T10:55:30.084Z",
+    "url": "https://linear.app/intent-hq/issue/FOU-977/ability-to-select-some-templates-when-creating-a-new-dashboard"
+}

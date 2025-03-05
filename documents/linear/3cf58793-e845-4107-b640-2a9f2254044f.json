@@ -1,0 +1,12 @@
+{
+    "id": "3cf58793-e845-4107-b640-2a9f2254044f",
+    "title": "Make Clickable Filters Default, Keep for Drag-and-Drop for power users",
+    "description": "**Background:**\nTo improve usability and reduce mistakes for everyday users, we want to make **clickable filters** the default behavior across all production environments. Advanced users should still have access to **drag-and-drop filters**, but this functionality should be placed behind a toggle.\n\nNote: Clickable filters currently do not support **AND vs OR relations** or **grouping filters**. While advanced filters exist, they do not cover grouping and in order to also cater to power users with minimum effort, we will move the old filter functionality behind the toggle instead. In the long run, we should consider ensuring that power user cases are also covered by the platform (eg.: Advanced filters, conversational interface)\n\n**Requirements:**\n\n* Set **clickable filters** as the default filtering method across all production environments\n* Ensure no loss of functionality for complex filtering needs by keeping the drag-and-drop filtering for advanced users - eg.: Behind the toggle",
+    "state": {
+        "name": "Duplicate"
+    },
+    "assignee": null,
+    "createdAt": "2025-02-12T18:31:36.366Z",
+    "updatedAt": "2025-03-03T10:58:11.004Z",
+    "url": "https://linear.app/intent-hq/issue/FOU-952/make-clickable-filters-default-keep-for-drag-and-drop-for-power-users"
+}

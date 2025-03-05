@@ -60,7 +60,7 @@ def rank_sources(question: str, model: str = "gpt-4o"):
     return result
 
 
-def execute_query(question: str, embeddings_dbs: Optional[list[FAISS]] = None, model: str = "gpt-4o", k: int = 3):
+def execute_query(question: str, embeddings_dbs: Optional[list[FAISS]] = None, model: str = "gpt-4o", k: int = 10):
     if embeddings_dbs is not None and len(embeddings_dbs) > 0:
         for embeddings_db in embeddings_dbs:
             docs = embeddings_db.similarity_search(query=question, k=k)
@@ -81,12 +81,16 @@ def query_preferred_source(question: str, model: str = "gpt-4o"):
     return execute_query(question, dbs, model)
 
 
-def query_all_sources(question: str, model: str = "gpt-4o", k: int = 3):
+def get_combined_context(question: str, k: int = 10):
     dbs = load_databases()
     docs = []
     for db in dbs.values():
         docs += db.similarity_search(query=question, k=k)
-    docs_content = "\n\n".join(doc.page_content for doc in docs)
+    return "\n\n".join(doc.page_content for doc in docs)
+
+
+def query_all_sources(question: str, model: str = "gpt-4o", k: int = 10):
+    docs_content = get_combined_context(question, k)
     prompt = hub.pull("rlm/rag-prompt")
     llm = init_chat_model(model, model_provider="openai")
     return llm.invoke(prompt.invoke({"question": question, "context": docs_content})).content

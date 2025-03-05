@@ -3,10 +3,12 @@
     "title": "Draft initial set of card configs",
     "description": null,
     "state": {
-        "name": "Todo"
+        "name": "In Progress"
     },
-    "assignee": null,
+    "assignee": {
+        "name": "Aaron Schick"
+    },
     "createdAt": "2025-02-21T14:19:22.181Z",
-    "updatedAt": "2025-02-21T14:19:22.181Z",
+    "updatedAt": "2025-03-04T11:36:43.900Z",
     "url": "https://linear.app/intent-hq/issue/FWD-101/draft-initial-set-of-card-configs"
 }

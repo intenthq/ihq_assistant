@@ -3,10 +3,10 @@
     "title": "Prepare profile data",
     "description": null,
     "state": {
-        "name": "In Progress"
+        "name": "In Review"
     },
     "assignee": null,
     "createdAt": "2025-01-23T11:02:19.375Z",
-    "updatedAt": "2025-01-27T12:36:32.065Z",
+    "updatedAt": "2025-03-04T10:07:44.745Z",
     "url": "https://linear.app/intent-hq/issue/FWD-22/prepare-profile-data"
 }

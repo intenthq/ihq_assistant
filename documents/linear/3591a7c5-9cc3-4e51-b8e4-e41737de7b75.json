@@ -1,0 +1,14 @@
+{
+    "id": "3591a7c5-9cc3-4e51-b8e4-e41737de7b75",
+    "title": "Add flows for Product Tours",
+    "description": "Product Tours are one of the most effective approaches but rely on third party tools as build is too complicated.\n\nThe aim is to design the flows whilst investigating potential third party tools.",
+    "state": {
+        "name": "Backlog"
+    },
+    "assignee": {
+        "name": "Mark Bunn"
+    },
+    "createdAt": "2025-02-20T14:28:11.649Z",
+    "updatedAt": "2025-02-20T14:28:51.355Z",
+    "url": "https://linear.app/intent-hq/issue/FOU-969/add-flows-for-product-tours"
+}

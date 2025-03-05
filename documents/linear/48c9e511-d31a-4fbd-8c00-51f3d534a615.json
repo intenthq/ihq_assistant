@@ -1,0 +1,12 @@
+{
+    "id": "48c9e511-d31a-4fbd-8c00-51f3d534a615",
+    "title": "Clickable filters default for any new client",
+    "description": "Acceptance criteria\n\n* Clickable filters are the *only* way to create filters for any new client.\n* Advanced filters are disabled\n* Demo environment should behave as new clients\n* Verizon and CBL keep working as it is today, except that we will remove the advanced filters for them too",
+    "state": {
+        "name": "Backlog"
+    },
+    "assignee": null,
+    "createdAt": "2025-03-03T10:52:52.617Z",
+    "updatedAt": "2025-03-03T10:58:07.482Z",
+    "url": "https://linear.app/intent-hq/issue/FOU-976/clickable-filters-default-for-any-new-client"
+}

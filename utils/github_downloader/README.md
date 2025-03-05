@@ -2,21 +2,25 @@
 Each PR is saved as a JSON file with this structure:
 ```json
 {
-  // PR metadata (title, description, author, etc.)
-  ...
-  "files": [
+  "title": "Feature: Implement new authentication system",
+  "description": "This PR adds support for OAuth 2.0 authentication...",
+  "author": "username",
+  "created_at": "2023-05-20T14:53:02Z",
+  "changed_files": [
     {
-      "sha": "abc123...",
-      "filename": "path/to/file.py",
-      "status": "modified",
-      "additions": 10,
-      "deletions": 5,
-      "changes": 15,
-      "patch": "@@ -50,7 +50,12 @@ class Example:\n     def method(self):\n-        return 42\n+        # New implementation\n+        return 84"
-    },
-    ...
+      "filename": "auth/oauth.py",
+      "patch": "@@ -50,7 +50,12 @@ class OAuth:\n     def authenticate(self):\n-        return token\n+        # New implementation\n+        return self.get_token()"
+    }
   ],
-  "raw_diff": "diff --git a/file1.py b/file1.py\nindex abc..def 100644\n..."
+  "reviews": [
+    {
+      "user": "reviewer",
+      "state": "APPROVED",
+      "body": "Looks good to me!"
+    }
+  ],
+  "linked_issues": "Authentication system upgrade",
+  "readme": "# Project\nThis is the project README..."
 }
 ```
 
@@ -51,4 +55,3 @@ python github_pr_downloader.py username repo-name -w 15
 - GitHub API has a rate limit (60 requests/hour for unauthenticated users, 5000/hour with a token)
 - For repos with many PRs or many changed files, downloads may take time
 - For very large repos, consider reducing thread count to avoid hitting rate limits
-- Using `--no-diffs` can significantly speed up downloads if the raw diff text is not needed

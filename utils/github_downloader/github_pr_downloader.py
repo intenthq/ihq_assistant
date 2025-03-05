@@ -7,26 +7,20 @@ import concurrent.futures
 from tqdm import tqdm
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from dotenv import load_dotenv
+load_dotenv()
 
 class GitHubPRDownloader:
-    def __init__(self, owner, repo, token=None, output_dir="pr_data", include_diffs=True):
+    def __init__(self, owner, repo, token=None, output_dir="pr_data"):
         self.owner = owner
         self.repo = repo
         self.output_dir = output_dir
-        self.include_diffs = include_diffs
         
         # Set up headers
         self.headers = {"Accept": "application/vnd.github.v3+json"}
-        if include_diffs:
-            # Request diffs in the response
-            self.diff_headers = {
-                "Accept": "application/vnd.github.v3.diff"
-            }
         
         if token:
             self.headers["Authorization"] = f"token {token}"
-            if include_diffs:
-                self.diff_headers["Authorization"] = f"token {token}"
         
         # Create a session with retry capability
         self.session = requests.Session()
@@ -42,27 +36,6 @@ class GitHubPRDownloader:
         # Ensure output directory exists
         os.makedirs(self.output_dir, exist_ok=True)
     
-    def get_total_pr_count(self):
-        """Get the total number of PRs in the repository"""
-        url = f"https://api.github.com/repos/{self.owner}/{self.repo}/pulls"
-        params = {"state": "all", "per_page": 1}
-        response = self.session.get(url, headers=self.headers, params=params)
-        response.raise_for_status()
-        
-        # Check if Link header exists to get pagination info
-        if "Link" in response.headers:
-            links = response.headers["Link"]
-            last_page_match = [link for link in links.split(",") if 'rel="last"' in link]
-            if last_page_match:
-                last_page_url = last_page_match[0].split(";")[0].strip("<>")
-                last_page = int(last_page_url.split("page=")[1].split("&")[0])
-                
-                # Get per_page value
-                per_page = int(params["per_page"])
-                return (last_page - 1) * per_page + len(response.json())
-        
-        return len(self.get_pr_batch(1, 100))
-    
     def get_pr_batch(self, page, per_page=100):
         """Get a batch of PRs for the specified page"""
         url = f"https://api.github.com/repos/{self.owner}/{self.repo}/pulls"
@@ -72,7 +45,7 @@ class GitHubPRDownloader:
         return response.json()
     
     def get_pr_details(self, pr_number):
-        """Get detailed information for a specific PR"""
+        """Get minimal PR details"""
         url = f"https://api.github.com/repos/{self.owner}/{self.repo}/pulls/{pr_number}"
         response = self.session.get(url, headers=self.headers)
         response.raise_for_status()
@@ -101,36 +74,100 @@ class GitHubPRDownloader:
             
         return all_files
     
-    def get_pr_diff(self, pr_number):
-        """Get the full diff for a PR"""
-        if not self.include_diffs:
-            return None
-            
-        url = f"https://api.github.com/repos/{self.owner}/{self.repo}/pulls/{pr_number}"
-        response = self.session.get(url, headers=self.diff_headers)
+    def get_pr_reviews(self, pr_number):
+        """Get reviews for a PR"""
+        url = f"https://api.github.com/repos/{self.owner}/{self.repo}/pulls/{pr_number}/reviews"
+        response = self.session.get(url, headers=self.headers)
+        if response.status_code == 404:
+            return []
         response.raise_for_status()
-        return response.text
+        return response.json()
+    
+    def get_linked_issue(self, pr_details):
+        """Get linked issue if available"""
+        issue_number = None
+        body = pr_details.get("body", "")
+        
+        # Check for linked issues in the body
+        if body:
+            # Look for common formats like "Fixes #123" or "Closes #123"
+            import re
+            issue_patterns = [
+                r"(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#(\d+)",
+                r"(?:issue|#)(\d+)"
+            ]
+            
+            for pattern in issue_patterns:
+                matches = re.findall(pattern, body, re.IGNORECASE)
+                if matches:
+                    issue_number = matches[0]
+                    break
+        
+        if issue_number:
+            try:
+                url = f"https://api.github.com/repos/{self.owner}/{self.repo}/issues/{issue_number}"
+                response = self.session.get(url, headers=self.headers)
+                if response.status_code == 200:
+                    return response.json()
+            except Exception:
+                pass
+        
+        return None
+    
+    def get_readme(self):
+        """Get repository README content"""
+        url = f"https://api.github.com/repos/{self.owner}/{self.repo}/readme"
+        try:
+            response = self.session.get(url, headers=self.headers)
+            if response.status_code == 200:
+                content_base64 = response.json().get("content", "")
+                import base64
+                return base64.b64decode(content_base64).decode('utf-8')
+        except Exception:
+            pass
+        return None
     
     def download_pr(self, pr_number):
-        """Download a PR and save it as a JSON file with all file changes"""
+        """Download a PR and save only the specified fields"""
         try:
-            # Get PR metadata
-            pr_data = self.get_pr_details(pr_number)
+            # Get PR basic details
+            pr_details = self.get_pr_details(pr_number)
             
             # Get files changed in PR
             pr_files = self.get_pr_files(pr_number)
             
-            # Add files to PR data
-            pr_data['files'] = pr_files
+            # Get reviews
+            pr_reviews = self.get_pr_reviews(pr_number)
             
-            # Get raw diff if requested
-            if self.include_diffs:
-                pr_data['raw_diff'] = self.get_pr_diff(pr_number)
+            # Get linked issues
+            linked_issues = self.get_linked_issue(pr_details)
+            
+            # Get README once and reuse for all PRs
+            if not hasattr(self, 'readme_content'):
+                self.readme_content = self.get_readme()
+            
+            # Create simplified PR data structure with only required fields
+            simplified_pr = {
+                "title": pr_details.get("title"),
+                "description": pr_details.get("body"),
+                "author": pr_details.get("user", {}).get("login"),
+                "created_at": pr_details.get("created_at"),
+                "changed_files": [
+                    {"filename": f["filename"], "patch": f.get("patch", "")}
+                    for f in (pr_files or [])
+                ],
+                "reviews": [
+                    {"user": r["user"]["login"], "state": r["state"], "body": r["body"]}
+                    for r in (pr_reviews or [])
+                ],
+                "linked_issues": linked_issues.get("title") if linked_issues else "No linked issues",
+                "readme": self.readme_content if self.readme_content else "No README found"
+            }
             
             # Save to file
             filename = os.path.join(self.output_dir, f"pr_{pr_number}.json")
             with open(filename, 'w', encoding='utf-8') as f:
-                json.dump(pr_data, f, indent=2, ensure_ascii=False)
+                json.dump(simplified_pr, f, indent=2, ensure_ascii=False)
             
             return True
         except Exception as e:
@@ -159,7 +196,7 @@ class GitHubPRDownloader:
             time.sleep(0.1)
         
         total_prs = len(pr_numbers)
-        print(f"Found {total_prs} pull requests. Downloading with file changes...")
+        print(f"Found {total_prs} pull requests. Downloading with selected fields...")
         
         # Download PRs in parallel using ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -181,13 +218,12 @@ class GitHubPRDownloader:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Download GitHub Pull Requests as JSON files")
+    parser = argparse.ArgumentParser(description="Download GitHub Pull Requests with selected fields")
     parser.add_argument("owner", help="Repository owner/organization")
     parser.add_argument("repo", help="Repository name")
     parser.add_argument("--token", "-t", help="GitHub API token")
     parser.add_argument("--output", "-o", default="pr_data", help="Output directory")
     parser.add_argument("--workers", "-w", type=int, default=10, help="Number of worker threads")
-    parser.add_argument("--no-diffs", action="store_true", help="Skip downloading raw diffs")
     args = parser.parse_args()
     
     # Use environment variable for token if not provided as argument
@@ -197,8 +233,7 @@ def main():
         owner=args.owner,
         repo=args.repo,
         token=token,
-        output_dir=args.output,
-        include_diffs=not args.no_diffs
+        output_dir=args.output
     )
     
     downloader.download_all_prs(max_workers=args.workers)

@@ -8,3 +8,5 @@ langchain[openai]
 numpy
 python-dotenv
 slack_bolt
+tree-sitter
+tree-sitter-language-pack

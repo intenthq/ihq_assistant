@@ -106,7 +106,7 @@ def implement_linear_function(function_args):
 
 # Function to search FAISS
 def search_faiss(query, channel_id, tools):
-    docs_content = query_all_sources(query, model="gpt-4o", k=3)
+    docs_content = query_all_sources(query, model="gpt-4o", k=10)
 
     # Retrieve last 5 messages from memory for this channel
     chat_history = mention_memory.get(channel_id, [])
@@ -137,16 +137,32 @@ def store_mention(channel_id, mention_text):
     mention_memory[channel_id].append(mention_text)
     logging.debug(f"🔹 Updated memory for channel {channel_id}: {list(mention_memory[channel_id])}")
 
+# Function to flush memory for a specific channel
+def flush_memory(channel_id):
+    if channel_id in mention_memory:
+        mention_memory[channel_id].clear()
+        logging.debug(f"🗑️ Memory cleared for channel {channel_id}")
+
 # Slack bot listens for messages that mention it
 @app.event("app_mention")
 def handle_mention(event, say):
     logging.debug(f"🔹 Received mention event: {event}")  # Debugging log
     user_query = event["text"]
     channel_id = event["channel"]
-    
+
+    # Check if user requested memory flush
+    if "forget everything" in user_query.lower():
+        flush_memory(channel_id)
+        say("Sure thing! I have flushed my memory. We can start all over again")
+        return
+
     store_mention(channel_id, user_query)  # Store the mention
     best_match = search_faiss(user_query, channel_id, tools)
     logging.debug(f"🔹 Best FAISS match: {best_match}")
+
+    store_mention(channel_id, best_match)
+
+    print(f"🧠 MEMORY{mention_memory}")
     
     say(f"{best_match}")
 
